@@ -30,32 +30,32 @@ headsepline, % Uncomment to get a line under the header
 %	INFORMACIÓN DE LA MEMORIA
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Título del trabajo} % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
+\thesistitle{Sistema de monitoreo y control de ambientes a distancia} % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
-\posgrado{Carrera de Especialización en Sistemas Embebidos} 
-%\posgrado{Carrera de Especialización en Internet de las Cosas} 
+%\posgrado{Carrera de Especialización en Sistemas Embebidos} 
+\posgrado{Carrera de Especialización en Internet de las Cosas} 
 %\posgrado{Carrera de Especialización en Intelegencia Artificial}
 %\posgrado{Maestría en Sistemas Embebidos} 
 %\posgrado{Maestría en Internet de las cosas}
 
-\author{Nombre del autor} % Tu nombre, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \authorname
+\author{César Javier Fanelli} % Tu nombre, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \authorname
 
-\director{Nombre del director (pertenencia)} % El nombre del director, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \dirname
-\codirector{Nombre del codirector (pertenencia)} % El nombre del codirector si lo hubiera, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \codirname.  Para activar este campo se debe descomentar la opción "codirector" en el comando \documentclass, línea 23.
+\director{Ing. Fernando Lichtschein (FIUBA)} % El nombre del director, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \dirname
+\codirector{Ing. Marı́a Celeste Corominas (FIUBA)} % El nombre del codirector si lo hubiera, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \codirname.  Para activar este campo se debe descomentar la opción "codirector" en el comando \documentclass, línea 23.
 
 \juradoUNO{Nombre del jurado 1 (pertenencia)} % Nombre y pertenencia del un jurado se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \jur1name
 \juradoDOS{Nombre del jurado 2 (pertenencia)} % Nombre y pertenencia del un jurado se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \jur2name
 \juradoTRES{Nombre del jurado 3 (pertenencia)} % Nombre y pertenencia del un jurado se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \jur3name
 
-%\ciudad{Ciudad Autónoma de Buenos Aires}
-\ciudad{ciudad de Mendoza}
+\ciudad{Ciudad Autónoma de Buenos Aires}
+%\ciudad{ciudad de Mendoza}
 
-\fechaINICIO{marzo de 2020}
-\fechaFINAL{diciembre de 2020}
+\fechaINICIO{febrero de 2023}
+\fechaFINAL{diciembre de 2023}
 
 
-\keywords{Sistemas embebidos, FIUBA} % Keywords for your thesis, print it elsewhere with \keywordnames
+\keywords{Internet de las cosas, FIUBA} % Keywords for your thesis, print it elsewhere with \keywordnames
 
 
 \begin{document}
@@ -76,7 +76,10 @@ headsepline, % Uncomment to get a line under the header
 %The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
 \centering
 
-El resumen debe escribirse en uno o dos párrafo.  Debe ser breve y conciso sin ningún elemento de formato en el texto como itálicas o negrita. Tampoco se deben usar siglas ni acrónimos que no resulten obvios para un lector promedio de la memoria, ni referencias bibliográficas o notas al pie de página.  No debe faltar qué es lo que se hizo/logró, qué importancia/valor tiene el proyecto/resultado, qué va a encontrar el lector en la memoria y qué contenidos de la especialización/maestría se aplicaron en el proyecto.
+%El resumen debe escribirse en uno o dos párrafo.  Debe ser breve y conciso sin ningún elemento de formato en el texto como itálicas o negrita. Tampoco se deben usar siglas ni acrónimos que no resulten obvios para un lector promedio de la memoria, ni referencias bibliográficas o notas al pie de página.  No debe faltar qué es lo que se hizo/logró, qué importancia/valor tiene el proyecto/resultado, qué va a encontrar el lector en la memoria y qué contenidos de la especialización/maestría se aplicaron en el proyecto.
+
+En la presente memoria se describe el diseño de un prototipo de sistema integral de domótica de índole académica. El trabajo realizado abarca el diseño de una página web, el código de un servidor, código y hardware de los nodos, que permite controlar la intensidad de iluminación y la temperatura de la calefacción de las habitaciones de una casa.
+El servidor se encuentra instalado de forma local y conectado a la red, montado sobre una Raspberry Pi, el cual aloja el frontend de la página web desde donde se pueden visualizar y cambiar los parámetros, el backend que recibe la información del frontend y la base de datos donde se alojan las mediciones, dispositivos y usuarios para iniciar sesión en el sistema. El otro componente del sistema es un nodo que recibe los parámetros enviados desde el servidor y cambia el estado de las salidas, y envía los parámetros sensados a la base de datos. En este caso se implementa un solo nodo, pero la idea es que sea escalable y se implementen los que sean necesarios. El nodo tiene también un selector de estado para cambiar las salidas y un display donde mostrará los parámetros sensados y seteados. Esto es para que funcione en modo independiente sin necesidad de comunicarse con el servidor o en caso de ser necesario cambiar los estados desde la habitación.
 
 \end{abstract}
 
@@ -88,7 +91,9 @@ El resumen debe escribirse en uno o dos párrafo.  Debe ser breve y conciso sin 
 %\addchaptertocentry{\acknowledgementname} % Descomentando esta línea se puede agregar los agradecimientos al índice
 \vspace{1.5cm}
 
-Esta sección es para agradecimientos personales y es totalmente \textbf{OPCIONAL}.  
+%Esta sección es para agradecimientos personales y es totalmente \textbf{OPCIONAL}.  
+
+Agradezco a docentes, alumnos y no docentes que conforman el posgrado y a los directores que me acompañaron en el desarrollo de este trabajo. En especial agradezco a mi esposa e hija, quienes fueron mi apoyo en todo momento y sin quienes no habría podido lograr la hazaña de emprender este viaje arduo y satisfactorio.
 
 \end{acknowledgements}
 
