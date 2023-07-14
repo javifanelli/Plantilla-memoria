@@ -102,4 +102,21 @@ Reactor	& 2 alternativas & \textit{Google Assistant} e \textit{IFTTT} \\
 
 \section{Objetivos y alcance}
 
-El objetivo de este trabajo es
+El objetivo de este trabajo es aplicar todos los conocimientos adquiridos en el transcurso del posgrado en un tema de interés particular como es la domótica. En especial, el principal propósito es hacer un prototipo que de inicio a un sistema más grande y con mayores características, con el foco de en un futuro cercano llegar a analizar la opción de integrarlo con sistemas como \textit{Matter} o \textit{Home Assistant}.
+
+En este desarrollo se incluyó:
+\begin{itemize}
+	\item El esquema de conexiones de la placa de ESP32 con los módulos de display, encoder y salida de relé.
+	\item El diseño en una placa de desarrollo del circuito del driver de la iluminación LED.
+	\item La programación de un firmware de la placa ESP32 para la comunicación y manejo de conexiones.
+	\item La creación del software forntend, backend y la base de datos que almacena toda la información dentro del servidor.
+	\item Las conexiones, instalación y configuración del servidor montado en una Raspberry Pi.
+\end{itemize}
+
+En la imagen 1.3 se puede ver un esquema básico del sistema desarrollado.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{Imagen 3 - Esquema.jpg}
+\caption[Esquema básico]{Esquema básico del sistema desarrollado.}
+\label{fig:1}
+\end{figure}
