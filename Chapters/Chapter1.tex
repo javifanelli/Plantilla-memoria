@@ -22,23 +22,23 @@
 %----------------------------------------------------------------------------------------
 \section{Introducción a la domótica}
 
-La domótica es la aplicación de la tecnología a la automatización del hogar y de edificios que utiliza para controlar y gestionar diferentes sistemas y dispositivos en el hogar o edificio de forma automatizada, con el fin de aportar seguridad, bienestar y confort. Estos sistemas pueden incluir iluminación, calefacción, aire acondicionado, sistemas de seguridad y cámaras de vigilancia, sistemas de entretenimiento y otros dispositivos domésticos. \citep{1}
+La domótica es la aplicación de la tecnología a la automatización del hogar que utiliza para controlar y gestionar diferentes sistemas y dispositivos, con el fin de aportar seguridad, bienestar y confort. Estos sistemas pueden incluir iluminación, calefacción, aire acondicionado, sistemas de seguridad y cámaras de vigilancia, sistemas de entretenimiento y otros dispositivos domésticos. \citep{1}
 
-Este sector como muchos otros que utilizan tecnología ha estado creciendo, al punto que algunas de las viviendas modernas son concebidas como hogares inteligentes desde su edificación, llegando a tener edificios completos con este tipo de soluciones instaladas.
+Este sector, como muchos otros que utilizan tecnología ha estado creciendo, al punto que algunas de las viviendas modernas son concebidas como hogares inteligentes desde su edificación, llegando a tener edificios completos con este tipo de soluciones instaladas.
 
 \subsection{Aplicaciones}
 
 Los servicios que ofrece la domótica se pueden agrupar según cinco aspectos o ámbitos principales \citep{2}:
 
 \begin{itemize}
-	\item Programación y ahorro energético. El ahorro energético no es algo tangible, sino legible con un concepto al que se puede llegar de muchas maneras. En muchos casos no es necesario sustituir los aparatos o sistemas del hogar por otros que consuman menos energía sino una gestión eficiente de los mismos.
-	\item Confort. El confort conlleva todas las actuaciones que se puedan llevar a cabo que mejoren la comodidad en una vivienda. Dichas actuaciones pueden ser de carácter tanto pasivo, como activo o mixtas.
-	\item Seguridad. Consiste en una red de seguridad encargada de proteger tanto los bienes patrimoniales, como la seguridad personal y la vida.
-	\item Comunicaciones. Son los sistemas o infraestructuras de comunicaciones que posee el hogar.
-	\item Accesibilidad. Bajo este mecanismo se incluyen las aplicaciones o instalaciones de control remoto del entorno que favorecen la autonomía personal de personas con limitaciones funcionales, o discapacidad.
+	\item Programación y ahorro energético: el ahorro energético no es algo tangible, sino legible con un concepto al que se puede llegar de muchas maneras. En muchos casos no es necesario sustituir los aparatos o sistemas del hogar por otros que consuman menos energía sino una gestión eficiente de los mismos.
+	\item Confort: conlleva todas las actuaciones que se puedan llevar a cabo que mejoren la comodidad en una vivienda. Dichas actuaciones pueden ser de carácter tanto pasivo, como activo o mixtas.
+	\item Seguridad: consiste en una red encargada de proteger tanto los bienes patrimoniales, como la seguridad personal y la vida.
+	\item Comunicaciones: son los sistemas o infraestructuras de comunicaciones que posee el hogar.
+	\item Accesibilidad: bajo este mecanismo se incluyen las aplicaciones o instalaciones de control remoto del entorno que favorecen la autonomía personal de personas con limitaciones funcionales, o discapacidad.
 \end{itemize}
 
-El presente trabajo puede encuadrarse dentro de la programación y ahorro energético, confort y accesibilidad. En la figura \ref{fig:1} puede verse una imagen con los distintos tipos de dispositivos que pueden estar conectados a un sistema de domótica.
+El presente trabajo puede encuadrarse dentro de la programación y ahorro energético, confort y accesibilidad. En la figura 1.1 puede verse una imagen con los distintos tipos de dispositivos que pueden estar conectados a un sistema de domótica.
 
 \begin{figure}[h]
 \centering
@@ -50,6 +50,56 @@ El presente trabajo puede encuadrarse dentro de la programación y ahorro energ�
 
 \section{Motivación}
 
-El uso de la tecnología para facilitar y mejorar la vida de las personas se está implementando en todo el mundo en diversos ámbitos creando soluciones complejas e innovadoras. Los electrodomésticos e instalaciones se fabrican con posibilidades de conexión y capacidades cada vez más amplias, abarcando funcionalidades complejas que aportan al bienestar y confort de las personas.
+El uso de la tecnología para facilitar y mejorar la vida de las personas se está implementando en todo el mundo en diversos ámbitos, creando soluciones complejas e innovadoras. Los electrodomésticos e instalaciones se fabrican con posibilidades de conexión y capacidades cada vez más amplias, abarcando funcionalidades complejas que aportan al bienestar y confort de las personas.
 
-Este proyecto nace como la mejora y actualización de la tesis de grado de ingeniería en la cual se creó un sistema similar que carecía de conectividad a internet y utilizando tecnología que al día de hoy es obsoleta. Es por este motivo que decidí hacer un proyecto académico con esta temática, pudiendo crear un sistema integral con una página web, base de datos que almacene mediciones y utilizando hardware actualizado.
+Este proyecto nace como la mejora y actualización de la tesis de grado de ingeniería en la cual se creó un sistema similar que carecía de conectividad a internet y utilizando tecnología que al día de hoy es obsoleta. Es por este motivo que se ha decidido hacer un proyecto académico con esta temática, pudiendo crear un sistema integral con una página web, base de datos que almacene mediciones y utilizando hardware actualizado.
+
+\section{Estado del arte}
+
+En el mercado actual existe una gran cantidad de sistemas de domótica, algunos privados o bajo licencias propietarias y otros con licencias de código abierto, nacionales e internacionales. Aquellas soluciones de código abierto tienen los repositorios públicos en \textit{Github} al alcance de todos para ser descargados, implementados y hasta modificados.
+
+Del mercado internacional, podemos nombrar 2 importantes variantes:
+\begin{itemize}
+	\item Matter: es un estándar de conectividad de código abierto creado por la \textit{Connectivity standards alliance}. Es de los más importantes a nivel global y participan empresas como Amazon, Apple, Google, Huawei entre muchas otras. Ha crecido y tomado mucha fuerza este corto tiempo de vida que tiene el proyecto. \citep{3}
+	\item Home assistant: software de automatización de hogares de código abierto que prioriza el control local y la privacidad. Desarrollado por una comunidad mundial de entusiastas de autodidactas y profesionales con un sentido propio. \citep{4}
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.15]{Imagen 2 - Soluciones.jpg}
+\caption[Matter y Home Assistant]{Matter y Home Assistant. \footnotemark}
+\label{fig:1}
+\end{figure}
+\footnotetext{Imágenes tomadas de: \url{https://csa-iot.org/} y \url{https://www.home-assistant.io/}}
+
+A nivel nacional existen empresas que se dedican al desarrollo de sistemas de domótica de forma provada:
+\begin{itemize}
+	\item Domotic. \citep{5}
+	\item Commax. \citep{6}
+	\item Reactor. \citep{7}
+\end{itemize}
+
+Todos estos sistemas utilizan distintos tipos de conexión (Zigbee o Wi-Fi), mensajes entre dispositivos (HTTP, MQTT y otros) y tipos de alojamiento de las plataformas (servidor local o en la nube).
+Pocos de estos sistemas tienen la posibilidad de funcionar con mandos desde el lugar o sin conexión con el servidor, es decir que sean independientes y controlables de forma local. Este proyecto tiene esa posibilidad ya que la página web es una forma más de cambiar los parámetros de los nodos y se está diseñado para decidir si cada terminal posee comandos o no.
+
+En la tabla 1.1 pueden verse las principales características de las empresas nacionales con soluciones similares.
+
+\begin{table}[h]
+\centering
+\caption[Mercado nacional]{Comparativa entre las distintas opciones}
+\begin{tabular}{l c c}
+\toprule
+\textbf{Empresa} & \textbf{Productos} & \textbf{Compatibilidad}\\
+\midrule
+Domotic	& Catálogo amplio & No especifica \\
+Commax	& Catálogo amplio & \textit{Smart things} y \textit{Apple Home Kit}	\\
+Reactor	& 2 alternativas & \textit{Google Assistant} e \textit{IFTTT} \\
+\bottomrule
+\hline
+\end{tabular}
+\label{tab:peces}
+\end{table}
+
+\section{Objetivos y alcance}
+
+El objetivo de este trabajo es
