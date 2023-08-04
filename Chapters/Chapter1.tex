@@ -20,13 +20,13 @@
 %\section{Introducción}
 
 %----------------------------------------------------------------------------------------
-\section{Introducción a la domótica}
+\section{Hogares inteligentes}
 
 La domótica es la aplicación de la tecnología a la automatización del hogar que utiliza para controlar y gestionar diferentes sistemas y dispositivos, con el fin de aportar seguridad, bienestar y confort. Estos sistemas pueden incluir iluminación, calefacción, aire acondicionado, sistemas de seguridad y cámaras de vigilancia, sistemas de entretenimiento y otros dispositivos domésticos. \citep{1}
 
 Este sector, como muchos otros que utilizan tecnología ha estado creciendo, al punto que algunas de las viviendas modernas son concebidas como hogares inteligentes desde su edificación, llegando a tener edificios completos con este tipo de soluciones instaladas.
 
-\subsection{Aplicaciones}
+\subsection{Aplicaciones comunes}
 
 Los servicios que ofrece la domótica se pueden agrupar según cinco aspectos o ámbitos principales \citep{2}:
 
@@ -38,13 +38,13 @@ Los servicios que ofrece la domótica se pueden agrupar según cinco aspectos o 
 	\item Accesibilidad: bajo este mecanismo se incluyen las aplicaciones o instalaciones de control remoto del entorno que favorecen la autonomía personal de personas con limitaciones funcionales, o discapacidad.
 \end{itemize}
 
-El presente trabajo puede encuadrarse dentro de la programación y ahorro energético, confort y accesibilidad. En la figura 1.1 puede verse una imagen con los distintos tipos de dispositivos que pueden estar conectados a un sistema de domótica.
+El presente trabajo puede encuadrarse dentro de la programación y ahorro energético, confort y accesibilidad. En la figura \ref{fig:2} puede verse una imagen con los distintos tipos de dispositivos que pueden estar conectados a un sistema de domótica.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{Imagen 1 - Domotica.jpg}
-\caption[Ejemplo de sistema de domótica]{Ejemplo de sistema de domótica. \footnotemark}
-\label{fig:1}
+\includegraphics[scale=0.55]{Figura 1 - Domotica.jpg}
+\caption[Ejemplo de sistema de domótica]{Ejemplo de sistema de domótica. \protect\footnotemark}
+\label{fig:2}
 \end{figure}
 \footnotetext{Imagen tomada de: \url{https://intelligy.com/blog/2018/03/12/conoces-la-domotica/}}
 
@@ -52,7 +52,7 @@ El presente trabajo puede encuadrarse dentro de la programación y ahorro energ�
 
 El uso de la tecnología para facilitar y mejorar la vida de las personas se está implementando en todo el mundo en diversos ámbitos, creando soluciones complejas e innovadoras. Los electrodomésticos e instalaciones se fabrican con posibilidades de conexión y capacidades cada vez más amplias, abarcando funcionalidades complejas que aportan al bienestar y confort de las personas.
 
-Este proyecto nace como mejora y actualización de la tesis de grado de ingeniería en la cual se creó un sistema similar que carecía de conectividad a internet y utilizando tecnología que al día de hoy es obsoleta. Es por este motivo que se ha decidido hacer un proyecto académico con esta temática, pudiendo crear un sistema integral con una página web, base de datos que almacene mediciones y utilizando hardware actualizado.
+Este proyecto nace como mejora y actualización de la tesis de grado de ingeniería, en la cual se creó un sistema similar que carecía de conectividad a Internet y utilizando tecnología que al día de hoy es obsoleta. Es por este motivo que se ha decidido hacer un proyecto académico con esta temática, pudiendo crear un sistema integral con una página web, base de datos que almacene mediciones y utilizando hardware actualizado.
 
 \section{Estado del arte}
 
@@ -60,15 +60,17 @@ En el mercado actual existe una gran cantidad de sistemas de domótica, algunos 
 
 Del mercado internacional, podemos nombrar 2 importantes variantes:
 \begin{itemize}
-	\item Matter: es un estándar de conectividad de código abierto creado por la \textit{Connectivity standards alliance}. Es de los más importantes a nivel global y participan empresas como Amazon, Apple, Google, Huawei entre muchas otras. Ha crecido y tomado mucha fuerza durante este corto tiempo de vida que tiene el proyecto. \citep{3}
+	\item Matter: es un estándar de conectividad de código abierto creado por la \textit{Connectivity standards alliance}. Es de los más importantes a nivel global y participan empresas como Amazon, Apple, Google, Huawei entre muchas otras. Ha crecido y tomado mucha fuerza durante el corto tiempo de vida que tiene el proyecto. \citep{3}
 	\item Home assistant: software de automatización de hogares de código abierto que prioriza el control local y la privacidad. Desarrollado por una comunidad mundial de entusiastas de autodidactas y profesionales con un sentido propio. \citep{4}
 \end{itemize}
 
+En la figura \ref{fig:3} se observa un kit de Matter a la izquierda y la pantalla de la aplicación de Home assistan a la derecha.
+
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.15]{Imagen 2 - Soluciones.jpg}
-\caption[Matter y Home Assistant]{Matter y Home Assistant. \footnotemark}
-\label{fig:1}
+\includegraphics[scale=0.15]{Figura 2 - Soluciones.jpg}
+\caption[Matter y Home Assistant]{Matter y Home Assistant. \protect\footnotemark}
+\label{fig:3}
 \end{figure}
 \footnotetext{Imágenes tomadas de: \url{https://csa-iot.org/} y \url{https://www.home-assistant.io/}}
 
@@ -81,9 +83,9 @@ A nivel nacional existen empresas que se dedican al desarrollo de sistemas de do
 
 Todos estos sistemas utilizan distintos tipos de conexión (Zigbee o Wi-Fi), mensajes entre dispositivos (HTTP, MQTT y otros) y tipos de alojamiento de las plataformas (servidor local o en la nube).
 
-Pocos de estos sistemas tienen la posibilidad de funcionar con mandos desde el lugar o sin conexión con el servidor, es decir que sean independientes y controlables de forma local. Este proyecto tiene tal posibilidad ya que la página web, es una forma más de cambiar los parámetros de los nodos y está diseñado para decidir si cada terminal posee comandos o no.
+Pocos de estos sistemas tienen la posibilidad de funcionar con mandos desde el lugar o sin conexión con el servidor, es decir, que sean independientes y controlables de forma local. Este proyecto tiene tal posibilidad, ya que la página web es una forma más de cambiar los parámetros de los nodos y está diseñado para decidir si cada terminal posee comandos o no.
 
-En la tabla 1.1 pueden verse las principales características de las empresas nacionales con soluciones similares.
+En la tabla \ref{tab:empresas} pueden verse las principales características de las empresas nacionales con soluciones similares.
 
 \begin{table}[h]
 \centering
@@ -98,7 +100,7 @@ Reactor	& 2 alternativas & \textit{Google Assistant} e \textit{IFTTT} \\
 \bottomrule
 \hline
 \end{tabular}
-\label{tab:peces}
+\label{tab:empresas}
 \end{table}
 
 \section{Objetivos y alcance}
@@ -110,14 +112,14 @@ En este desarrollo se incluyó:
 	\item El esquema de conexiones de la placa de ESP32 con los módulos de display, encoder y salida de relé.
 	\item El diseño en una placa de desarrollo del circuito del driver de la iluminación LED.
 	\item La programación de un firmware de la placa ESP32 para la comunicación y manejo de conexiones.
-	\item La creación del software forntend, backend y la base de datos que almacena toda la información dentro del servidor.
+	\item La creación del software frontend, backend y la base de datos que almacena toda la información dentro del servidor.
 	\item Las conexiones, instalación y configuración del servidor montado en una Raspberry Pi.
 \end{itemize}
 
-En la imagen 1.3 se puede ver un esquema básico del sistema desarrollado.
+En la figura \ref{fig:4} se puede ver un esquema básico del sistema desarrollado.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{Imagen 3 - Esquema.png}
-\caption[Esquema básico]{Esquema básico del sistema desarrollado.}
-\label{fig:1}
+\includegraphics[scale=0.4]{Figura 3 - Esquema.png}
+\caption[Esquema básico]{Esquema básico del sistema desarrollado. \protect}
+\label{fig:4}
 \end{figure}

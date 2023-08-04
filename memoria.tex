@@ -46,7 +46,7 @@ headsepline, % Uncomment to get a line under the header
 
 \juradoUNO{Esp. Ing. Pedro Rosito (FIUBA)} % Nombre y pertenencia del un jurado se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \jur1name
 \juradoDOS{Ing. Marcelo Edgardo Romeo (UNSAM)} % Nombre y pertenencia del un jurado se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \jur2name
-\juradoTRES{Nombre del jurado 3 (pertenencia)} % Nombre y pertenencia del un jurado se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \jur3name
+\juradoTRES{MG. Lic. Leopoldo Zimperz (FIUBA)} % Nombre y pertenencia del un jurado se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \jur3name
 
 \ciudad{Ciudad Autónoma de Buenos Aires}
 %\ciudad{ciudad de Mendoza}
@@ -78,8 +78,9 @@ headsepline, % Uncomment to get a line under the header
 
 %El resumen debe escribirse en uno o dos párrafo.  Debe ser breve y conciso sin ningún elemento de formato en el texto como itálicas o negrita. Tampoco se deben usar siglas ni acrónimos que no resulten obvios para un lector promedio de la memoria, ni referencias bibliográficas o notas al pie de página.  No debe faltar qué es lo que se hizo/logró, qué importancia/valor tiene el proyecto/resultado, qué va a encontrar el lector en la memoria y qué contenidos de la especialización/maestría se aplicaron en el proyecto.
 
-En la presente memoria se describe el diseño de un prototipo de sistema integral de domótica de índole académica. El trabajo realizado abarca el diseño de una página web, el código de un servidor, código y hardware de los nodos, que permite controlar la intensidad de iluminación y la temperatura de la calefacción de las habitaciones de una casa.
-El servidor se encuentra instalado de forma local y conectado a la red, montado sobre una Raspberry Pi, el cual aloja el frontend de la página web desde donde se pueden visualizar y cambiar los parámetros, el backend que recibe la información del frontend y la base de datos donde se alojan las mediciones, dispositivos y usuarios para iniciar sesión en el sistema. El otro componente del sistema es un nodo que recibe los parámetros enviados desde el servidor y cambia el estado de las salidas, y envía los parámetros sensados a la base de datos. En este caso se implementa un solo nodo, pero la idea es que sea escalable y se implementen los que sean necesarios. El nodo tiene también un selector de estado para cambiar las salidas y un display donde mostrará los parámetros sensados y seteados. Esto es para que funcione en modo independiente sin necesidad de comunicarse con el servidor o en caso de ser necesario cambiar los estados desde la habitación.
+En la presente memoria se describe el diseño de un prototipo de sistema integral de domótica de índole académica. El propósito es aplicar los conocimientos adquiridos en el transcurso del posgrado. Es un desarrollo que en esta etapa está implementado con dos tipos de nodos.
+
+En el desarrollo del trabajo se utilizaron conocimientos de diseño de páginas web, desarrollo de código backend para el servidor, implementación de bases de datos, desarrollo de sistemas embebidos, ciberseguridad y diseño electrónico para el hardware adicional.
 
 \end{abstract}
 
