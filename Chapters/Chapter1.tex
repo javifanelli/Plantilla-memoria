@@ -22,7 +22,7 @@
 %----------------------------------------------------------------------------------------
 \section{Hogares inteligentes}
 
-La domótica es la aplicación de la tecnología a la automatización del hogar que utiliza para controlar y gestionar diferentes sistemas y dispositivos, con el fin de aportar seguridad, bienestar y confort. Estos sistemas pueden incluir iluminación, calefacción, aire acondicionado, sistemas de seguridad y cámaras de vigilancia, sistemas de entretenimiento y otros dispositivos domésticos. \citep{1}
+La domótica es la aplicación de la tecnología a la automatización del hogar que utiliza para controlar y gestionar diferentes sistemas y dispositivos, con el fin de aportar seguridad, bienestar y confort. Estos sistemas pueden incluir iluminación, calefacción, aire acondicionado, sistemas de seguridad y cámaras de vigilancia, sistemas de entretenimiento y otros dispositivos domésticos \citep{1}.
 
 Este sector, como muchos otros que utilizan tecnología ha estado creciendo, al punto que algunas de las viviendas modernas son concebidas como hogares inteligentes desde su edificación, llegando a tener edificios completos con este tipo de soluciones instaladas.
 
@@ -60,11 +60,11 @@ En el mercado actual existe una gran cantidad de sistemas de domótica, algunos 
 
 Del mercado internacional, podemos nombrar 2 importantes variantes:
 \begin{itemize}
-	\item Matter: es un estándar de conectividad de código abierto creado por la \textit{Connectivity standards alliance}. Es de los más importantes a nivel global y participan empresas como Amazon, Apple, Google, Huawei entre muchas otras. Ha crecido y tomado mucha fuerza durante el corto tiempo de vida que tiene el proyecto. \citep{3}
-	\item Home assistant: software de automatización de hogares de código abierto que prioriza el control local y la privacidad. Desarrollado por una comunidad mundial de entusiastas de autodidactas y profesionales con un sentido propio. \citep{4}
+	\item Matter: es un estándar de conectividad de código abierto creado por la \textit{Connectivity standards alliance}. Es de los más importantes a nivel global y participan empresas como Amazon, Apple, Google, Huawei entre muchas otras. Ha crecido y tomado mucha fuerza durante el corto tiempo de vida que tiene el proyecto \citep{3}.
+	\item Home assistant: software de automatización de hogares de código abierto que prioriza el control local y la privacidad. Desarrollado por una comunidad mundial de entusiastas de autodidactas y profesionales con un sentido propio \citep{4}.
 \end{itemize}
 
-En la figura \ref{fig:3} se observa un kit de Matter a la izquierda y la pantalla de la aplicación de Home assistan a la derecha.
+En la figura \ref{fig:3} se observa un kit de Matter a la izquierda y la pantalla de la aplicación de Home Assistant a la derecha.
 
 \begin{figure}[h]
 \centering
@@ -74,11 +74,11 @@ En la figura \ref{fig:3} se observa un kit de Matter a la izquierda y la pantall
 \end{figure}
 \footnotetext{Imágenes tomadas de: \url{https://csa-iot.org/} y \url{https://www.home-assistant.io/}}
 
-A nivel nacional existen empresas que se dedican al desarrollo de sistemas de domótica de forma provada:
+A nivel nacional existen empresas que se dedican al desarrollo de sistemas de domótica de forma privada:
 \begin{itemize}
-	\item Domotic. \citep{5}
-	\item Commax. \citep{6}
-	\item Reactor. \citep{7}
+	\item Domotic \citep{5}.
+	\item Commax \citep{6}.
+	\item Reactor \citep{7}.
 \end{itemize}
 
 Todos estos sistemas utilizan distintos tipos de conexión (Zigbee o Wi-Fi), mensajes entre dispositivos (HTTP, MQTT y otros) y tipos de alojamiento de las plataformas (servidor local o en la nube).
@@ -105,12 +105,13 @@ Reactor	& 2 alternativas & \textit{Google Assistant} e \textit{IFTTT} \\
 
 \section{Objetivos y alcance}
 
-El objetivo de este trabajo es aplicar todos los conocimientos adquiridos en el transcurso del posgrado, en un tema de interés particular como es la domótica. En especial, el principal propósito es hacer un prototipo que de inicio a un sistema más grande y con mayores características, con el foco de que en un futuro cercano se pueda llegar a analizar la opción de integrarlo con sistemas como \textit{Matter} o \textit{Home Assistant}.
+El objetivo de este trabajo es aplicar todos los conocimientos adquiridos en el transcurso del posgrado, en un tema de interés particular como es la domótica. En especial, el principal propósito es hacer un prototipo que dé inicio a un sistema más grande y con mayores características, con la particularidad de que en un futuro cercano se pueda llegar a analizar la opción de integrarlo con sistemas como \textit{Matter} o \textit{Home Assistant}.
 
 En este desarrollo se incluyó:
 \begin{itemize}
-	\item El esquema de conexiones de la placa de ESP32 con los módulos de display, encoder y salida de relé.
-	\item El diseño en una placa de desarrollo del circuito del driver de la iluminación LED.
+	\item El esquema de conexiones de las placas de ESP32 con los módulos de display, encoder, driver LED y driver de calefacción.
+	\item El diseño en una placa de desarrollo del circuito del driver de corriente continua de la iluminación LED.
+	\item El diseño en una placa de desarrollo del circuito del driver de corriente alterna de la calefacción.
 	\item La programación de un firmware de la placa ESP32 para la comunicación y manejo de conexiones.
 	\item La creación del software frontend, backend y la base de datos que almacena toda la información dentro del servidor.
 	\item Las conexiones, instalación y configuración del servidor montado en una Raspberry Pi.
@@ -119,7 +120,7 @@ En este desarrollo se incluyó:
 En la figura \ref{fig:4} se puede ver un esquema básico del sistema desarrollado.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{Figura 3 - Esquema.png}
+\includegraphics[scale=0.4]{Figura 3 - Diagrama en bloques.jpg}
 \caption[Esquema básico]{Esquema básico del sistema desarrollado. \protect}
 \label{fig:4}
 \end{figure}
