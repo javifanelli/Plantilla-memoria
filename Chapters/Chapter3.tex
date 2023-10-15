@@ -93,7 +93,7 @@ La tabla de usuarios contiene todos los datos relacionados a aquellas personas q
 
 Los valores almacenados en esta tabla son el ID de usuario (de 1 a 3), el nombre de usuario, la clave, el nombre de la persona y su apellido, su e-mail y un campo de tipo booleano que se modificará cuando se haya actualizado por primera vez. Cabe aclarar que cada vez que se ingrese al sistema con un usuario que no haya actualizado sus datos, se mostrará en pantalla un aviso para que este actualice sus datos.
 
-En la figura \ref{fig:12} puede verse la tabla cargada con los 3 usuarios de los cuales hay 2 actualizados y el tercero tiene los valores por default.
+En la figura \ref{fig:12} puede verse la tabla cargada con los 3 usuarios de los cuales hay 2 actualizados y el tercero tiene los valores por defecto.
 
 \begin{figure}[h]
 \centering
@@ -139,7 +139,100 @@ La estructura de archivos de cada página esta diseñada de la misma forma como 
 \label{fig:15}
 \end{figure}
 
-Además se utilizaron interfaces para definir las estructuras de datos de los dispositivos, las mediciones y los usuarios, y servicios para el proceso de autenticación y de consultas HTTP al backend, que serán explicadas posteriormente. El servicio de autenticación consta de el ingreso de un usuario y contraseña que están almacenados en la base de datos. Si dichos valores ingresados corresponden con alguno de los existentes, se genera un \textit{token} 
+Además se utilizaron interfaces para definir las estructuras de datos de los dispositivos, las mediciones y los usuarios, y servicios para el proceso de autenticación y de consultas HTTP al backend, que serán explicadas posteriormente.
+
+El servicio de autenticación consta de el ingreso de un usuario y contraseña en la página de \textit{login} que se comparan con los que están almacenados en la base de datos. Si dichos valores ingresados corresponden con alguno de los existentes, se genera un \textit{token} desde el backend que se almacena en el dispositivo que está haciendo la consulta. Esto permite que se puedan acceder a las demás páginas de la aplicación.
+
+En el código \ref{lst:Autenticación de rutas} puede verse el fragmento de la autenticación.
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  captionpos=b,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+}
+
+\begin{lstlisting}[caption={Autenticación de rutas}, label={lst:Autenticación de rutas}]
+
+export class AuthGuard {
+
+  constructor(private _loginService: LoginService, private _router: Router) {}
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    
+    if (!this._loginService.logIn) {
+      this._router.navigate(['/login'])
+      return false
+    }
+
+    return true;
+  }
+}
+\end{lstlisting}
+
+\subsection{Rutas y páginas más importantes}
+
+Las rutas disponibles en la aplicación se describen en la tabla \ref{tab:rutas}:
+
+\begin{table}[h]
+\centering
+\caption[Rutas]{Rutas de la aplicación}
+\begin{tabular}{l l}
+\toprule
+\textbf{Ruta} 			& \textbf{Descripción}\\
+\midrule
+/login					& Pantalla de inicio de sesión\\
+/home					& Pantalla principal con funciones y listado de dispositivos\\
+/usuario/:id				& Pantalla de edición de datos de usuario\\
+/ayuda					& Pantalla de manual de usuario\\
+/dispositivos/:id		& Pantalla de visualización de estado y última medición\\
+						& del dispositivo\\
+/medicion/:id			& Pantalla de visualización de las mediciones del\\
+						& dispositivo\\
+/grafico/:id				& Pantalla de visualización del gráfico de las mediciones\\
+						& del día\\
+/config/:id				& Pantalla de configuración del dispositivo\\
+/modificar/:id			& Pantalla de edición de datos de un dispositivo existente\\
+/agregar					& Pantalla para agregar un dispositivo nuevo\\
+\bottomrule
+\hline
+\end{tabular}
+\label{tab:rutas}
+\end{table}
+
+\subsubsection{Pantalla de \textit{login}}
+
+En la figura \ref{fig:16} se muestra la página de inicio de sesión en la aplicación.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{Imagen 16 - Login.png}
+\caption[Pantalla login]{Pantalla de \textit{login}. \footnotemark}
+\label{fig:16}
+\end{figure}
+
+El sistema trae la posibilidad de configurar 3 usuarios distintos para que utilicen, visualicen y configuren la aplicación. Todos poseen el mismo rol y pueden configurar cualquier campo que corresponda a dicho usuario ingresando en la opción Usuario dentro de la pantalla principal.
+
+\subsubsection{Pantalla principal \textit{home}}
+
+Esta es la pantalla principal de la aplicación. Aquí se pueden encontrar todas las opciones más relevantes de configuración y visualización del sistema.
 
 \section{Desarrollo del backend}
 
