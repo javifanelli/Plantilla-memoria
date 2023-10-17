@@ -143,7 +143,7 @@ Además se utilizaron interfaces para definir las estructuras de datos de los di
 
 El servicio de autenticación consta de el ingreso de un usuario y contraseña en la página de \textit{login} que se comparan con los que están almacenados en la base de datos. Si dichos valores ingresados corresponden con alguno de los existentes, se genera un \textit{token} desde el backend que se almacena en el dispositivo que está haciendo la consulta. Esto permite que se puedan acceder a las demás páginas de la aplicación.
 
-En el código \ref{lst:Autenticación de rutas} puede verse el fragmento de la autenticación.
+En el código \ref{lst:Autenticación de rutas} puede verse el fragmento de la autenticación del archivo \textit{auth.guard.ts}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -168,28 +168,27 @@ En el código \ref{lst:Autenticación de rutas} puede verse el fragmento de la a
 }
 
 \begin{lstlisting}[caption={Autenticación de rutas}, label={lst:Autenticación de rutas}]
-
 export class AuthGuard {
-
   constructor(private _loginService: LoginService, private _router: Router) {}
-
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
     if (!this._loginService.logIn) {
       this._router.navigate(['/login'])
       return false
     }
-
     return true;
   }
 }
 \end{lstlisting}
 
+El \textit{route guard} es una característica del Angular Router que permite ejecutar algún tipo de lógica cuando se solicita una ruta, y basado en esa lógica, se permite o denega el acceso al usuario a esa ruta. Comúnmente es utilizado para verificar si un usuario está logueado o no en el sistema para verificar si tiene autorización para acceder a esa URL.
+
+El \textit{route guard} se puede agregar implementando la interfaz \textit{CanActivate} disponible en \textit{@angular/router} y allí implementar el método \textit{canActivate()} que contendrá la lógica para denegar o permitir el acceso a la ruta.\citep{22}
+
 \subsection{Rutas y páginas más importantes}
 
-Las rutas disponibles en la aplicación se describen en la tabla \ref{tab:rutas}:
+Las rutas disponibles en la aplicación se describen en la tabla \ref{tab:rutas}. A través de ellas se navega dentro de la aplicación y se accede a las distintas pantallas. Estas rutas se encuentran definidas en el archivo \textit{app-routing.module.ts} donde además se hace referencia al módulo de la aplicación que debe abrirse al acceder a cada una de las rutas listadas.
 
 \begin{table}[h]
 \centering
@@ -200,14 +199,11 @@ Las rutas disponibles en la aplicación se describen en la tabla \ref{tab:rutas}
 \midrule
 /login					& Pantalla de inicio de sesión\\
 /home					& Pantalla principal con funciones y listado de dispositivos\\
-/usuario/:id				& Pantalla de edición de datos de usuario\\
+/usuario/:userId			& Pantalla de edición de datos de usuario\\
 /ayuda					& Pantalla de manual de usuario\\
-/dispositivos/:id		& Pantalla de visualización de estado y última medición\\
-						& del dispositivo\\
+/dispositivos/:id		& Pantalla de visualización de estado del dispositivo\\
 /medicion/:id			& Pantalla de visualización de las mediciones del\\
-						& dispositivo\\
 /grafico/:id				& Pantalla de visualización del gráfico de las mediciones\\
-						& del día\\
 /config/:id				& Pantalla de configuración del dispositivo\\
 /modificar/:id			& Pantalla de edición de datos de un dispositivo existente\\
 /agregar					& Pantalla para agregar un dispositivo nuevo\\
@@ -217,13 +213,15 @@ Las rutas disponibles en la aplicación se describen en la tabla \ref{tab:rutas}
 \label{tab:rutas}
 \end{table}
 
+En los casos en los que se encuentra el campo \textit{:id}, este valor se completa con el valor de identificador del elemento en cuestión. En el caso de los usuarios, cada uno de ellos tiene un identificador, lo mismo que para los dispositivos. Para las rutas \textit{medicion}, \textit{grafico}, \textit{config} y \textit{modificar} el \textit{:id} al que se hace referencia es el del dispositivo al que se quiere leer o modificar.
+
 \subsubsection{Pantalla de \textit{login}}
 
 En la figura \ref{fig:16} se muestra la página de inicio de sesión en la aplicación.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{Imagen 16 - Login.png}
+\includegraphics[scale=0.38]{Imagen 16 - Login.png}
 \caption[Pantalla login]{Pantalla de \textit{login}. \footnotemark}
 \label{fig:16}
 \end{figure}
@@ -232,7 +230,56 @@ El sistema trae la posibilidad de configurar 3 usuarios distintos para que utili
 
 \subsubsection{Pantalla principal \textit{home}}
 
-Esta es la pantalla principal de la aplicación. Aquí se pueden encontrar todas las opciones más relevantes de configuración y visualización del sistema.
+En la figura \ref{fig:17} puede verse la pantalla principal de la aplicación. En la parte superior se encuentran los botones principales de la aplicación tales como el de configuración del usuario actual, cerrar sesión y la página de ayuda o manual de usuario. En la parte inferior se encuentra el listado de dispositivos implementado con \textit{ion-cards} los cuales permiten ver el estado de cada dispositivo, modificar los datos y alarma del dispositivo y eliminarlo de la lista. Hay que tener en cuenta que al borrar un dispositivo del sistema se borran también todas las mediciones y documentos asociados a él dentro de la base de datos.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.38]{Imagen 17 - Home.png}
+\caption[Pantalla home]{Pantalla de \textit{home}. \footnotemark}
+\label{fig:17}
+\end{figure}
+
+Por último en la parte inferior de la pantalla principal se encuentra el botón para agregar un dispositivo nuevo. Dicho botón dirige a la página de creación de un dispositivo nuevo.
+
+\subsubsection{Pantalla de creación de dispositivo nuevo}
+
+En la pantalla que se muestra en la figura \ref{fig:18} se deben cargar los datos de un dispositivo nuevo. Esto es importante ya que aquí se dan de alta los dispositivos nuevos que se incorporar al sistema.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.45]{Imagen 18 - Agregar.png}
+\caption[Pantalla home]{Pantalla de creación de dispositivo nuevo. \footnotemark}
+\label{fig:18}
+\end{figure}
+
+Aquí deben colocarse los datos de ubicación del nodo, el nombre con el que se desea identificarlo, el ID de fabricante, el tipo, y los valores de la alarma en caso de que se trate de un nodo de temperatura. El estado de la alarma puede configurarse pro primera vez en esta sección, pero puede modificarse cuando se desee. Se debe tener en cuenta que al momento existen 2 tipos de dispositivos: temperatura y luz dimmer. Solo se encuentra habilitada la alarma para los nodos del tipo de temperatura ya que no tiene sentido colocar una alarma a un nodo que no realiza mediciones ni controla parámetros críticos.
+
+El ID del fabricante es un número de 13 dígitos compuesto de la siguiente forma: los 2 primeros identifican el tipo de dispositivo; los 4 que le siguen son obligatoriamente los números "2819", y se colocan como número de identificación del sistema y como seguridad; los 2 dígitos que le siguen son el año de fabricación del dispositivo; los 2 que le siguen son la semana de fabricación; y por último los 3 dígitos que restan son el número de fabricación en esa semana, es decir que comienza en el "000" y termina en "999". Este número resultante será entregado por el fabricante y será único para cada dispositivo.
+
+Desde el frontend se verifica que se ingrese el código de seguridad dentro del ID del fabricante en el fragmento de código \ref{lst:Verificación de ID}:
+
+\begin{lstlisting}[caption={Verificación de ID}, label={lst:Verificación de ID}]
+verificarID(dispositivoId: string): boolean {
+    const posicion = 2;
+    return dispositivoId.charAt(posicion) === '2' &&
+      dispositivoId.charAt(posicion + 1) === '8' &&
+      dispositivoId.charAt(posicion + 2) === '1' &&
+      dispositivoId.charAt(posicion + 3) === '9';
+  }
+\end{lstlisting}
+
+Una vez que el dispositivo nuevo esté dado de alta, al encenderlo se va a conectar a la red y va a registrar automáticamente la dirección MAC dejándola guardada en la tabla de dispositivos.
+
+\subsubsection{Pantalla de configuración de modo}
+
+En esta sección se va a configurar el modo de trabajo y todos los parámetros asociados.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.45]{Imagen 19 - Enviar datos.png}
+\caption[Pantalla de configuración de modo]{Pantalla de configuración de modo. \footnotemark}
+\label{fig:19}
+\end{figure}
 
 \section{Desarrollo del backend}
 
