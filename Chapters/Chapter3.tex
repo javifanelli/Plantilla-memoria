@@ -775,19 +775,19 @@ En la figura \ref{fig:28} se muestra la imagen del encoder a la izquierda y del 
 \subsection{Especificaciones de los actuadores}
 
 \begin{itemize}
-\item SSD1306: display OLED 1,2 pulgadas.
+\item SSD1306: display OLED 1,2 pulgadas \citep{33}.
 	\begin{itemize}
 		\item Resolución: 128x64 píxeles.
 		\item Interfaz: I2C.
 	\end{itemize}
-	\item Control de potencia para 220 V: módulo con aislación y salida de triac. Se utilizó un triac BT137 \citep{33} y un optoacoplador MOC3041 \citep{34}.
+	\item Control de potencia para 220 V: módulo con aislación y salida de triac. Se utilizó un triac BT137 \citep{34} y un optoacoplador MOC3041 \citep{35}.
 	\begin{itemize}
 		\item Tipo: encendido - apagado (on - off).
 		\item Carga máxima: 8 A.
 		\item Tipo de aislación: optoacoplador.
 		\item Tensión máxima de aislación: 7500 V AC pico, 1 segundo de duración.
 	\end{itemize}
-	\item Control de intensidad de luz: módulo de control para iluminación LED de corriente continua implementado con modulación por ancho de pulso (PWM). Se utilizó un transistor BC337 \citep{35}.
+	\item Control de intensidad de luz: módulo de control para iluminación LED de corriente continua implementado con modulación por ancho de pulso (PWM). Se utilizó un transistor BC337 \citep{36}.
 	\begin{itemize}
 		\item Tipo: PWM y encendido - apagado (on - off).
 		\item Carga máxima: 800 mA CC.
@@ -795,7 +795,7 @@ En la figura \ref{fig:28} se muestra la imagen del encoder a la izquierda y del 
 	\end{itemize}
 \end{itemize}
 
-En la figura \ref{fig:29} se muestra la imagen del circuito de potencia montado en una caja estanca a la izquierda y del control por ancho de pulso a la derecha con sus correspondientes esquemas de conexión.
+En la figura \ref{fig:29} se muestra la imagen del circuito de potencia para la calefacción montado en una caja estanca a la izquierda y del control por ancho de pulso para la dimerización a la derecha con sus correspondientes esquemas de conexión.
 
 \begin{figure}[h]
 \centering
@@ -806,3 +806,19 @@ En la figura \ref{fig:29} se muestra la imagen del circuito de potencia montado 
 
 \section{Comunicación del sistema}
 
+El sistema utiliza el protocolo MQTT con certificados SSL \citep{37}. Los mismos son certificados autofirmados y se crearon desde el servidor uno para el \textit{broker} y otro para los nodos como se explica en la página de \textit{EMQX} \citep{38}. El sistema utiliza envíos de mensajes en ambos sentidos, es decir de los nodos al servidor y del servidor a los nodos dependiendo del tipo y función del mensaje.
+
+\subsection{\citep{Topics} MQTT utilizados}
+
+El sistema posee distintos \textit{topics} para el envío de información. A continuación se detalla cada uno de ellos:
+
+\begin{itemize}
+	\item \textit{/home/temperatura/data}: es el que utilizan los nodos de temperatura para enviar las mediciones al servidor.
+	\item \textit{/home/temperatura/settings}: es el que utiliza el servidor para enviar los datos a los nodos de temperatura con los datos de programación elegidos por el usuario desde la aplicación web.
+	\item \textit{/home/dimmer/data}: es el que utilizan los nodos de dimerización para enviar las mediciones al servidor.
+	\item \textit{/home/dimmer/settings}:  es el que utiliza el servidor para enviar los datos a los nodos de dimerización con los datos de programación elegidos por el usuario desde la aplicación web.
+	\item \textit{/home/config}: por aquí se envían los mensajes de los nodos al servidor cuando se encienden, dando un mensaje de que está activo.
+	\item \textit{/home/setup}: en este el servidor les envía los datos de configuración a los dispositivos cuando se encienden, para que tengan los datos de configuración de la última medición enviada y no se pierda el último estado.
+\end{itemize}
+
+En todos los casos se utilizó un QoS de cero, ya que la pérdida de un mensaje, si llegara a pasar, no significaría un problema.
