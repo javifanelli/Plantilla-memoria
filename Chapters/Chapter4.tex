@@ -43,9 +43,7 @@ Puede observarse la Raspberry Pi400, la fuente de 5 VCC 3A con su cable, un disc
 
 \section{Metodología empleada}
 
-El hardware se testeó haciendo pruebas de funcionamiento con los materiales mostrados en la sección anterior. Las pruebas constaron de hacer funcionar los nodos por 2 días enteros corroborando que el control de temperatura funcione en los valores configurados y que la luminaria encienda y respete los valores de los saltos. Además se probó el funcionamiento de los horarios de encendido y apagado.
-
-En cuanto al software se utilizaron distintas metodologías para la depuración de forma manual de los embebidos, el frontend y el backend. A continuación se describen cada una de ellas.
+El hardware se testeó de forma funcional. En cuanto al software se utilizaron distintas metodologías para la depuración de forma manual de los embebidos, el frontend y el backend. A continuación se describen cada una de ellas.
 
 \subsection{Pruebas del frontend}
 
@@ -53,7 +51,7 @@ Para el frontend se utilizaron pruebas funcionales manuales con el sistema funci
 
 Para las pruebas se utilizó la salida de la consola del navegador a medida que se iban implementando funciones y páginas nuevas. Con esto se logró mostrar en tiempo real el funcionamiento del sistema en cada una de las páginas y con cada función que se fue agregando. En el código \ref{lst:console front} se muestra a modo de ejemplo parte del desarrollo de la página para la visualización de un mensaje por consola de la configuración de un dispositivo.
 
-\begin{lstlisting}[caption={Muestra por consola de los datos recibidos}, label={console front}]
+\begin{lstlisting}[caption={Muestra por consola de los datos recibidos}, label={lst:console front}]
 ngOnInit() {
     const deviceId = this.activatedRoute.snapshot.paramMap.get('id') as string;
     this.dispositivoId = deviceId, 10;
@@ -76,7 +74,7 @@ Allí se puede ver la función \textit{console.log} mostrando los datos por cons
 \label{fig:33}
 \end{figure}
 
-Este mecanismo se utilizó en todas las páginas de la aplicación web y gracias a su utilización se consiguieron los resultados esperados de funcionalidad y errores.
+Este mecanismo se utilizó en todas las páginas de la aplicación web y gracias a esto se consiguieron los resultados esperados de funcionalidad y depuración de errores.
 
 \subsection{Pruebas del backend}
 
@@ -84,7 +82,7 @@ Para el backend se utilizó un mecanismo similar de pruebas funcionales que para
 
 El desarrollo fue progresivo por lo que a medida que se fueron incorporando funciones o endpoints nuevos, se fueron colocando muestras por consola para poder observar si los datos y las consultas estaban siendo resueltos de forma correcta. En el código \ref{lst:console back} se muestra como ejemplo el \textit{router} para borrar la tabla de mediciones de un dispositivo y el mensaje por consola de éxito y el ID del dispositivo.
 
-\begin{lstlisting}[caption={Muestra por consola de los datos consultados}, label={console back}]
+\begin{lstlisting}[caption={Muestra por consola de los datos consultados}, label={lst:console back}]
 borrarTablaRouter.delete('/:id', async function (req, res, next) {
   const id = req.params.id;
   let connection;
@@ -117,9 +115,9 @@ En la figura \ref{fig:34} se puede ver la consola con el mensaje de éxito y el 
 \label{fig:34}
 \end{figure}
 
-A estas pruebas se sumó el uso de la aplicación \textit{MQTTX} para testear la comunicación con el \textit{broker} y los dispositivos, especialmente cuando se implementaba la seguridad con los certificados SSL. De esta forma se ensayaron la primera conexión segura, la inserción de datos desde un dispositivo simulado, el envío de configuración desde la aplicación a los nodos y el mensaje de solicitud de configuración inicial de un nodo, entre otros.
+A estas pruebas se sumó el uso de la aplicación \textit{MQTTX} para testear la comunicación con el \textit{broker} y los dispositivos, especialmente al momento de implementar la seguridad con los certificados SSL. De esta forma se ensayaron la primera conexión segura, la inserción de datos desde un dispositivo simulado, el envío de configuración desde la aplicación a los nodos y el mensaje de solicitud de configuración inicial de un nodo, entre otros.
 
-En la figura \ref{fig:35} puede verse la configuración
+En la figura \ref{fig:35} puede verse la configuración de \textit{MQTTX} para el envío de datos de una medición simulada en el \textit{topic \textbackslash home\textbackslash temperatura\textbackslash data} para posteriormente verificar la correcta inserción en la base de datos.
 
 \begin{figure}[h]
 \centering
@@ -130,9 +128,63 @@ En la figura \ref{fig:35} puede verse la configuración
 
 \subsection{Pruebas de los nodos}
 
-Las placas ESP32 tienen un depurador de software incorporado por lo que se colocaron funciones de muestra de
+El hardware se testeó haciendo pruebas de funcionamiento con los materiales mostrados en la sección anterior. Las pruebas constaron de hacer funcionar los nodos por dos días corridos corroborando que el control de temperatura funcione en los valores configurados y que la luminaria encienda y respete los valores de los saltos. Además se probó el funcionamiento de los horarios de encendido y apagado.
+
+En cuanto al software, las placas ESP32 poseen comunicación serial incorporado por lo que se colocaron funciones de muestra por consola al momento de incorporar funcionalidades nuevas. En el código  \ref{lst:dispositivo} se puede observar a modo de ejemplo el uso de la función \textit{ESP\_LOGI} para mostrar por consola el valor de la salida recibido por MQTT.
+
+\lstset{frame=tb,
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  captionpos=b,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+}
+
+\begin{lstlisting}[caption={Muestra por consola de la terminal ESP-IDF}, label={lst:dispositivo}]
+const cJSON *salida = cJSON_GetObjectItemCaseSensitive(root, "salida");
+    if (cJSON_IsNumber(salida) && select) {
+        if(salida->valueint==100)
+            out_temp=true;
+        if(salida->valueint==0)
+            out_temp=false;
+        ESP_LOGI(TAG, "Received MQTT salida: %d", salida->valueint);
+        pant_main();
+    }
+\end{lstlisting}
+
+En este caso se muestra por consola el mensaje de recepción del valor de salida y su valor correspondiente.
 
 \section{Resultados finales}
+
+Como prueba final se montaron los 2 nodos, y al de temperatura se le conectó un calefactor eléctrico de 750 W. Del lado del servidor se puso a correr el \textit{docker compose} con el sistema completo. Se hicieron seteos tanto desde la aplicación web como de cada uno de los nodos.
+
+En la figura \ref{fig:36} sel lado izquierdo se ve el nodo de iluminación funcionando encendido y en la pantalla se observa el valor de la salida y del lado derecho la pantalla de configuración de modo automático.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.35]{Imagen 36 - Dimmer funcionando.jpg}
+\caption[MQTTX]{Dimmer en modo automático funcionando.}
+\label{fig:36}
+\end{figure}
+
+En la figura \ref{fig:37} puede observarse la página de configuración del nodo dimmer. Puede observarse que los datos ingresados corresponden con los datos guardados en el nodo y que está actuando como corresponde.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.65]{Imagen 37 - Config.png}
+\caption[MQTTX]{Pantalla de configuración de dimmer.}
+\label{fig:37}
+\end{figure}
 
 
 
