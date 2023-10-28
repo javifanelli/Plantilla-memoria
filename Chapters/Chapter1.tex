@@ -22,7 +22,7 @@
 %----------------------------------------------------------------------------------------
 \section{Hogares inteligentes}
 
-La domótica es la aplicación de la tecnología a la automatización del hogar que utiliza para controlar y gestionar diferentes sistemas y dispositivos, con el fin de aportar seguridad, bienestar y confort. Estos sistemas pueden incluir iluminación, calefacción, aire acondicionado, sistemas de seguridad y cámaras de vigilancia, sistemas de entretenimiento y otros dispositivos domésticos \citep{1}.
+La domótica es la aplicación de la tecnología a la automatización del hogar, que se utiliza para controlar y gestionar diferentes sistemas y dispositivos, con el fin de aportar seguridad, bienestar y confort. Estos sistemas pueden abarcar la iluminación, la calefacción, el aire acondicionado, los sistemas de seguridad y cámaras de vigilancia, los sistemas de entretenimiento y otros dispositivos domésticos \citep{1}.
 
 Este sector, como muchos otros que utilizan tecnología ha estado creciendo, al punto que algunas de las viviendas modernas son concebidas como hogares inteligentes desde su edificación, llegando a tener edificios completos con este tipo de soluciones instaladas.
 
@@ -42,7 +42,7 @@ El presente trabajo puede encuadrarse dentro de la programación y ahorro energ�
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.55]{Figura 1 - Domotica.jpg}
+\includegraphics[scale=0.55]{Figura 2 - Domotica.jpg}
 \caption[Ejemplo de sistema de domótica]{Ejemplo de sistema de domótica. \protect\footnotemark}
 \label{fig:2}
 \end{figure}
@@ -56,7 +56,7 @@ Este proyecto nace como mejora y actualización de la tesis de grado de ingenier
 
 \section{Estado del arte}
 
-En el mercado actual existe una gran cantidad de sistemas de domótica, algunos privados o bajo licencias propietarias y otros con licencias de código abierto, nacionales e internacionales. Aquellas soluciones de código abierto tienen los repositorios públicos en \textit{Github} al alcance de todos para ser descargados, implementados y hasta modificados.
+En el mercado actual existe una gran cantidad de sistemas de domótica, algunos privados o bajo licencias propietarias y otros con licencias de código abierto, nacionales e internacionales. Aquellas soluciones de código abierto tienen los repositorios públicos en GitHub al alcance de todos para ser descargados, implementados y hasta modificados.
 
 Del mercado internacional, podemos nombrar 2 importantes variantes:
 \begin{itemize}
@@ -68,22 +68,22 @@ En la figura \ref{fig:3} se observa un kit de Matter a la izquierda y la pantall
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.15]{Figura 2 - Soluciones.jpg}
+\includegraphics[scale=0.15]{Figura 3 - Soluciones.jpg}
 \caption[Matter y Home Assistant]{Matter y Home Assistant. \protect\footnotemark}
 \label{fig:3}
 \end{figure}
 \footnotetext{Imágenes tomadas de: \url{https://csa-iot.org/} y \url{https://www.home-assistant.io/}}
 
-A nivel nacional existen empresas que se dedican al desarrollo de sistemas de domótica de forma privada:
+A nivel nacional, existen empresas que se dedican al desarrollo de sistemas de domótica de forma privada:
 \begin{itemize}
 	\item Domotic \citep{5}.
 	\item Commax \citep{6}.
 	\item Reactor \citep{7}.
 \end{itemize}
 
-Todos estos sistemas utilizan distintos tipos de conexión (Zigbee o Wi-Fi), mensajes entre dispositivos (HTTP, MQTT y otros) y tipos de alojamiento de las plataformas (servidor local o en la nube).
+Todos estos sistemas utilizan distintos tipos de conexión como Zigbee o Wi-Fi, mensajes entre dispositivos como HTTP, MQTT y otros, y pueden alojar sus plataformas en un servidor local o en la nube.
 
-Pocos de estos sistemas tienen la posibilidad de funcionar con mandos desde el lugar o sin conexión con el servidor, es decir, que sean independientes y controlables de forma local. Este proyecto tiene tal posibilidad, ya que la página web es una forma más de cambiar los parámetros de los nodos y está diseñado para decidir si cada terminal posee comandos o no.
+Sin embargo, pocos de estos sistemas tienen la posibilidad de funcionar con mandos desde el lugar o sin conexión con el servidor, es decir, que sean independientes y controlables de forma local. Este proyecto tiene tal posibilidad, ya que la página web es una forma más de cambiar los parámetros de los nodos y está diseñado para decidir si cada terminal posee comandos o no.
 
 En la tabla \ref{tab:empresas} pueden verse las principales características de las empresas nacionales con soluciones similares.
 
@@ -105,7 +105,7 @@ Reactor	& 2 alternativas & \textit{Google Assistant} e \textit{IFTTT} \\
 
 \section{Objetivos y alcance}
 
-El objetivo de este trabajo es aplicar todos los conocimientos adquiridos en el transcurso del posgrado, en un tema de interés particular como es la domótica. En especial, el principal propósito es hacer un prototipo que dé inicio a un sistema más grande y con mayores características, con la particularidad de que en un futuro cercano se pueda llegar a analizar la opción de integrarlo con sistemas como \textit{Matter} o \textit{Home Assistant}.
+El objetivo de este trabajo es aplicar todos los conocimientos adquiridos a lo largo del posgrado en un área de interés particular, que es la domótica. En especial, el principal propósito es desarrollar un prototipo que sirva como punto de partida para un sistema más amplio y avanzado, con la particularidad de que en un futuro cercano se pueda llegar a analizar la opción de integrarlo con sistemas como \textit{Matter} o \textit{Home Assistant}.
 
 En este desarrollo se incluyó:
 \begin{itemize}
@@ -120,7 +120,7 @@ En este desarrollo se incluyó:
 En la figura \ref{fig:4} se puede ver un esquema básico del sistema desarrollado.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{Figura 3 - Diagrama en bloques.jpg}
+\includegraphics[scale=0.4]{Figura 4 - Diagrama en bloques.jpg}
 \caption[Esquema básico]{Esquema básico del sistema desarrollado. \protect}
 \label{fig:4}
 \end{figure}

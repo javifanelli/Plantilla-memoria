@@ -1,7 +1,125 @@
 % Appendix A
 
-\chapter{Appendix Title Here} % Main appendix title
+\chapter{Ejemplo de creación de menú en ESP32} % Main appendix title
+
+En este anexo se describe un ejemplo de manejo del menú principal en los nodos.
 
 \label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
 
-Write your Appendix content here.
+\begin{lstlisting}[caption={Código del menú principal.}, label={lst:Ejemplo menu}]
+void menu1 (void)
+{
+	ssd1306_clear_screen(&devd, false);
+	pos_menu=1;
+	while(level==1){
+		if(inc_enc){
+			pos_menu++;
+			inc_enc=false;
+			if (pos_menu>6)
+				pos_menu=1;
+		}	
+		if (dec_enc){
+			pos_menu--;
+			dec_enc=false;
+			if (pos_menu<1)
+				pos_menu=6;
+		}
+		if(pos_menu==1){
+			ssd1306_display_text(&devd, 0, "Estado          ", 16, true);
+			ssd1306_display_text(&devd, 1, "Info conexion   ", 16, false);
+			ssd1306_display_text(&devd, 2, "Modo            ", 16, false);
+			ssd1306_display_text(&devd, 3, "Conf modo auto  ", 16, false);
+			ssd1306_display_text(&devd, 4, "Actualizar hora ", 16, false);
+			ssd1306_display_text(&devd, 5, "Pant. principal ", 16, false);
+			if(btn_enc){
+				btn_enc=false;
+				level=10;
+			}
+		}
+		if(pos_menu==2){
+			ssd1306_display_text(&devd, 0, "Estado          ", 16, false);
+			ssd1306_display_text(&devd, 1, "Info conexion   ", 16, true);
+			ssd1306_display_text(&devd, 2, "Modo            ", 16, false);
+			ssd1306_display_text(&devd, 3, "Conf modo auto  ", 16, false);
+			ssd1306_display_text(&devd, 4, "Actualizar hora ", 16, false);
+			ssd1306_display_text(&devd, 5, "Pant. principal ", 16, false);
+			if(btn_enc){
+				btn_enc=false;
+				level=11;
+			}
+		}
+		if(pos_menu==3){
+			ssd1306_display_text(&devd, 0, "Estado          ", 16, false);
+			ssd1306_display_text(&devd, 1, "Info conexion   ", 16, false);
+			ssd1306_display_text(&devd, 2, "Modo            ", 16, true);
+			ssd1306_display_text(&devd, 3, "Conf modo auto  ", 16, false);
+			ssd1306_display_text(&devd, 4, "Actualizar hora ", 16, false);
+			ssd1306_display_text(&devd, 5, "Pant. principal ", 16, false);	
+			if(btn_enc){
+				btn_enc=false;
+				level=2;
+			}
+		}
+		if(pos_menu==4){
+			ssd1306_display_text(&devd, 0, "Estado          ", 16, false);
+			ssd1306_display_text(&devd, 1, "Info conexion   ", 16, false);
+			ssd1306_display_text(&devd, 2, "Modo            ", 16, false);
+			ssd1306_display_text(&devd, 3, "Conf modo auto  ", 16, true);
+			ssd1306_display_text(&devd, 4, "Actualizar hora ", 16, false);
+			ssd1306_display_text(&devd, 5, "Pant. principal ", 16, false);	
+			if(btn_enc){
+				btn_enc=false;
+				level=3;
+			}
+		}
+		if(pos_menu==5){
+			ssd1306_display_text(&devd, 0, "Estado          ", 16, false);
+			ssd1306_display_text(&devd, 1, "Info conexion   ", 16, false);
+			ssd1306_display_text(&devd, 2, "Modo            ", 16, false);
+			ssd1306_display_text(&devd, 3, "Conf modo auto  ", 16, false);
+			ssd1306_display_text(&devd, 4, "Actualizar hora ", 16, true);
+			ssd1306_display_text(&devd, 5, "Pant. principal ", 16, false);
+			if(btn_enc){
+				btn_enc=false;
+				ssd1306_display_text(&devd, 6, "Obteniendo la", 13, false);
+    			ssd1306_display_text(&devd, 7, "hora...", 7, false);
+				obtain_time();
+				ssd1306_display_text(&devd, 7, "hora... OK", 10, false);
+				vTaskDelay(pdMS_TO_TICKS(1000));
+				ssd1306_display_text(&devd, 6, "               ", 15, false);
+				ssd1306_display_text(&devd, 7, "               ", 15, false);
+			}
+		}
+		if(pos_menu==6){
+			ssd1306_display_text(&devd, 0, "Estado          ", 16, false);
+			ssd1306_display_text(&devd, 1, "Info conexion   ", 16, false);
+			ssd1306_display_text(&devd, 2, "Modo            ", 16, false);
+			ssd1306_display_text(&devd, 3, "Conf modo auto  ", 16, false);
+			ssd1306_display_text(&devd, 4, "Actualizar hora ", 16, false);
+			ssd1306_display_text(&devd, 5, "Pant. principal ", 16, true);
+			if (btn_enc){
+				btn_enc=false;
+				level=0;	
+			}
+		}
+	}
+	if(level==10){
+			if (net_con)
+				pant_conok();
+			if (!net_con)
+				pant_nocon();
+	}
+	if(level==11){
+		pant_est();
+	}
+	if(level==2){
+		menu2();
+	}
+	if(level==3){
+		menu3();
+	}
+	if(level==0){
+		pant_main();
+	}
+}
+\end{lstlisting}
