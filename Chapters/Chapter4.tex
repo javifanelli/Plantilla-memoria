@@ -13,7 +13,7 @@ Para ensayar el nodo de temperatura, se utilizaron los materiales que lo conform
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.25]{Figura 31 - Nodo temperatura.jpg}
-\caption[Nodo temperatura]{Componentes del nodo de temperatura.}
+\caption[Componentes del nodo de temperatura]{Componentes del nodo de temperatura.}
 \label{fig:31}
 \end{figure}
 
@@ -24,7 +24,7 @@ Para ensayar el nodo de dimerización, se utilizaron los materiales que lo confo
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.25]{Figura 32 - Nodo dimmer.jpg}
-\caption[Nodo dimmer]{Componentes del nodo de dimerización.}
+\caption[Componentes del nodo de dimerización]{Componentes del nodo de dimerización.}
 \label{fig:32}
 \end{figure}
 
@@ -35,7 +35,7 @@ En la figura \ref{fig:33} pueden verse los componentes que forman parte del serv
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.25]{Figura 33 - Servidor.jpg}
-\caption[Servidor]{Componentes del servidor.}
+\caption[Componentes del servidor]{Componentes del servidor.}
 \label{fig:33}
 \end{figure}
 
@@ -68,10 +68,11 @@ ngOnInit() {
 
 Allí se puede ver la función \textit{console.log} mostrando los datos por consola. En la figura \ref{fig:34} se puede ver la pantalla de configuración del dispositivo y el mensaje por consola con los datos recibidos.
 
+\newpage
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{Figura 34 - Consola front.png}
-\caption[Prueba frontend]{Pantalla de aplicación y consola.}
+\includegraphics[scale=0.37]{Figura 34 - Consola front.png}
+\caption[Pantalla de aplicación y consola del frontend]{Pantalla de aplicación y consola.}
 \label{fig:34}
 \end{figure}
 
@@ -109,11 +110,10 @@ borrarTablaRouter.delete('/:id', async function (req, res, next) {
 
 En la figura \ref{fig:35} se puede ver la consola con el mensaje de éxito y el ID del dispositivo cuya tabla de mediciones fue eliminada.
 
-\newpage
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.65]{Figura 35 - Consola back.png}
-\caption[Prueba backend]{Mensaje por consola del servidor.}
+\caption[Mensaje por consola del servidor en el backend]{Mensaje por consola del servidor.}
 \label{fig:35}
 \end{figure}
 
@@ -123,8 +123,8 @@ En la figura \ref{fig:36} puede verse la configuración de \textit{MQTTX} para e
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.53]{Figura 36 - MQTTX.png}
-\caption[MQTTX]{Pantalla de MQTTX.}
+\includegraphics[scale=0.5]{Figura 36 - MQTTX.png}
+\caption[Pantalla de MQTTX]{Pantalla de MQTTX.}
 \label{fig:36}
 \end{figure}
 
@@ -174,8 +174,8 @@ En la figura \ref{fig:37}, se puede observar el nodo de iluminación funcionando
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.08]{Figura 37 - Dimmer funcionando.jpg}
-\caption[Dimmer funciona]{Dimmer en modo automático funcionando.}
+\includegraphics[scale=0.06]{Figura 37 - Dimmer funcionando.jpg}
+\caption[Dimmer en modo automático funcionando]{Dimmer en modo automático funcionando.}
 \label{fig:37}
 \end{figure}
 
@@ -184,7 +184,7 @@ En la figura \ref{fig:38}, se puede observar la pantalla de configuración de mo
 \begin{figure}[h]
 \centering
 \includegraphics[angle=270, scale=0.47]{Figura 38 - Pantalla dimmer funcionando.jpg}
-\caption[Pantalla dimmer funciona]{Pantalla de configuración del dimmer en modo automático.}
+\caption[Pantalla de configuración del dimmer en modo automático]{Pantalla de configuración del dimmer en modo automático.}
 \label{fig:38}
 \end{figure}
 
@@ -192,18 +192,18 @@ En la figura \ref{fig:39} puede observarse la página de configuración del nodo
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{Figura 39 - Config.png}
-\caption[Config dimmer]{Pantalla de configuración de dimmer.}
+\includegraphics[scale=0.45]{Figura 39 - Config.png}
+\caption[Pantalla de configuración de dimmer]{Pantalla de configuración de dimmer.}
 \label{fig:39}
 \end{figure}
 
-Se ha verificado la capacidad de agregar y modificar los datos de los dispositivos desde la página correspondiente, contrastando los datos visualizados en la pantalla de \textit{phpMyAdmin}. Durante una prueba que se realizó, se cargó un dispositivo nuevo y se corroboró tanto desde la aplicación del sistema como desde la página de administración de la base de datos. En la figura \ref{fig:39} puede verse cómo se agregó un dispositivo nuevo desde la página en la parte superior y cómo se ve reflejado en la base de datos en la inferior.
+Se ha verificado la capacidad de agregar y modificar los datos de los dispositivos desde la página correspondiente, contrastando los datos visualizados en la pantalla de \textit{phpMyAdmin}. Durante una prueba que se realizó, se cargó un dispositivo nuevo y se corroboró tanto desde la aplicación del sistema como desde la página de administración de la base de datos. En la figura \ref{fig:40} puede verse cómo se agregó un dispositivo nuevo desde la página en la parte superior y cómo se ve reflejado en la base de datos en la inferior.
 
 \newpage
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.33]{Figura 40 - Agregar dispositivo.png}
-\caption[Agregar dispositivo]{Valores de dispositivo nuevo.}
+\caption[Valores de dispositivo nuevo al agregar dispositivo]{Valores de dispositivo nuevo.}
 \label{fig:40}
 \end{figure}
 
@@ -213,8 +213,8 @@ Algo similar a la prueba de los dispositivos se hizo con los usuarios. El sistem
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.33]{Figura 41 - Modificar usuario.png}
-\caption[Cambiar usuario]{Valores de usuario modificados.}
+\includegraphics[scale=0.34]{Figura 41 - Modificar usuario.png}
+\caption[Valores de usuario modificados]{Valores de usuario modificados.}
 \label{fig:41}
 \end{figure}
 
@@ -223,7 +223,7 @@ Por último, se hizo la corroboración de la activación de la alarma y el enví
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.35]{Figura 42 - Alarma.png}
-\caption[Envío alarma]{Envío de alarma de medición.}
+\caption[Envío de alarma de medición]{Envío de alarma de medición.}
 \label{fig:42}
 \end{figure}
 
@@ -236,7 +236,7 @@ En la tabla \ref{tab:estadoarte} se encuentra la comparación entre las solucion
 \newpage
 \begin{table}[h]
 \centering
-\caption[Estado arte mercado nacional]{Comparativa entre las distintas opciones.}
+\caption[Comparativa entre las distintas opciones - Estado del arte]{Comparativa entre las distintas opciones.}
 \begin{tabular}{l c c c}
 \toprule
 \textbf{Funcionalidad} & \textbf{Domotic} & \textbf{Reactor} & \textbf{Trabajo final}\\
