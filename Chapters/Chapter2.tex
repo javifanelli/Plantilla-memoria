@@ -122,7 +122,35 @@ Algunas de las funciones y aplicaciones más comunes de este tipo de computadora
 	\item Conectar los puertos del microprocesador desde un conector de 40 pines a distintos circuitos y dispositivos.
 \end{itemize}
 
+\subsubsection{Especificaciones técnicas de la Raspberry Pi 400}
+
+El sistema operativo del servidor está instalado y se ejecuta desde un disco de estado sólido por USB. Este tipo de discos tienen una mayor capacidad de escrituras y lecturas que una memoria microSD, lo que resulta favorable al momento de hacer modificaciones y pruebas de ejecución de software. En la versión final del sistema todo el software estará instalado en una tarjeta microSD para que todo el conjunto sea lo más pequeño posible.
+
+En la tabla \ref{tab:Especificaciones Raspberry Pi 400} pueden verse las especificaciones técnicas de hardware más importantes del modelo Raspberry Pi 400.
+
+\begin{table}[h]
+\centering
+\caption[Raspberry Pi 400]{Especificaciones de Raspberry Pi 400.}
+\begin{tabular}{l c}
+\toprule
+Procesador		&	Broadcom BCM2711 quad-core Cortex-A72 (ARM v8) \\
+				&	64-bit SoC @ 1.8 GHz \\
+\midrule
+Memoria			&	4GB LPDDR4-3200 \\
+\midrule
+				&	2.4 GHz and 5.0 GHz 802.11b/g/n/ac wireless LAN \\
+Conectividad		&	Bluetooth 5.0, BLE\\
+				&   Gigabit Ethernet \\
+\midrule
+Alimentación		&	5 V DC vía USB-C\\
+\bottomrule
+\hline
+\end{tabular}
+\label{tab:Especificaciones Raspberry Pi 400}
+\end{table}
+
 \subsection{Sistema en chip}
+\label{subsection:SistemaEnChip}
 
 Un sistema en chip o SoC (del inglés \textit{System on a Chip}) es aquel dispositivo que posee integrados todos o gran parte de los módulos que componen un sistema informático o electrónico en un único circuito integrado o chip. El diseño de estos sistemas puede estar basado en circuitos de señal digital, señal analógica y a menudo módulos o sistemas de radiofrecuencia. Un ámbito común de aplicación de la tecnología SoC son los sistemas embebidos.
 
@@ -138,7 +166,7 @@ Un SoC estándar está constituido por \citep{12}:
 	\item Reguladores de voltaje y circuitos de gestión eficaz de la energía.
 \end{itemize}
 
-\subsubsection{Familia ESP32}\citep{13}
+\subsubsection{Familia ESP32 \citep{13}}
 
 ESP32 es la denominación de una familia de chips SoC de bajo costo y consumo de energía, con tecnología Wi-Fi y Bluetooth de modo dual integrada. Emplea un microprocesador Tensilica Xtensa LX6 en sus variantes de simple y doble núcleo e incluye interruptores de antena, balun de radiofrecuencia, amplificador de potencia, amplificador receptor de bajo ruido, filtros y módulos de administración de energía. El ESP32 fue creado y desarrollado por Espressif Systems.
 
@@ -152,22 +180,43 @@ En la figura \ref{fig:8} se pueden ver algunos de los módulos de desarrollo que
 \end{figure}
 \footnotetext{Imagen tomada de: \url{https://www.electrodaddy.com/esp32/}}
 
+En la tabla \ref{tab:esp32} pueden verse las características de hardware más importantes del microcontrolador ESP32, utilizado para el desarrollo de los dispositivos.
+
+\begin{table}[h]
+\centering
+\caption[Módulos ESP32]{Especificaciones técnicas del módulo ESP32 \citep{14}.}
+\begin{tabular}{l c c}
+\toprule
+\textbf{Característica} & \textbf{ESP32}\\
+\midrule
+Núcleo			& Xtensa® dual-core 32-bit LX6\\
+				& @240 MHz\\
+Flash			& 0 MB, 2 MB o 4 MB\\
+				& (dependiendo la versión)\\
+Protocolo Wi-Fi	& 802.11 b/g/n, 2.4 GHz\\
+\bottomrule
+\hline
+\end{tabular}
+\label{tab:esp32}
+\end{table}
+
 \subsection{Especificaciones de los sensores}
 
 A continuación, se listan sensores utilizados con sus principales características:
 
 \begin{itemize}
-	\item DHT22: sensor de temperatura y humedad relativa ambiente \citep{33}.
+	\item DHT22: sensor de temperatura y humedad relativa ambiente \citep{15}.
 	\begin{itemize}
 		\item Rango de temperatura: -40 a 80 grados Celsius.
 		\item Resolución: 0,1 grado Celsius.
 		\item Comunicación: serie, bus de 1 hilo, 40 bits por trama.
 	\end{itemize}
-	\item KY-040: encoder rotativo con interruptor. 20 pulsos por vuelta \citep{34}.
+	\item KY-040: encoder rotativo con interruptor. 20 pulsos por vuelta \citep{16}.
 \end{itemize}
 
 En la figura \ref{fig:9} se muestra la imagen del encoder a la izquierda y del sensor de temperatura a la derecha con sus correspondientes esquemas de conexión.
 
+\newpage
 \begin{figure}[h]
 \centering
 \includegraphics[scale=1.4]{Figura 9 - Sensores.jpg}
@@ -178,19 +227,19 @@ En la figura \ref{fig:9} se muestra la imagen del encoder a la izquierda y del s
 \subsection{Especificaciones de los actuadores}
 
 \begin{itemize}
-\item SSD1306: display OLED 1,2 pulgadas \citep{35}.
+\item SSD1306: display OLED 1,2 pulgadas \citep{17}.
 	\begin{itemize}
 		\item Resolución: 128x64 píxeles.
 		\item Interfaz: I2C.
 	\end{itemize}
-	\item Control de potencia para 220 V: módulo con aislación y salida de triac. Se utilizó un triac BT137 \citep{36} y un optoacoplador MOC3041 \citep{37}.
+	\item Control de potencia para 220 V: módulo con aislación y salida de triac. Se utilizó un triac BT137 \citep{18} y un optoacoplador MOC3041 \citep{19}.
 	\begin{itemize}
 		\item Tipo: encendido - apagado (on - off).
 		\item Carga máxima: 8 A.
 		\item Tipo de aislación: optoacoplador.
 		\item Tensión máxima de aislación: 7500 V AC pico, 1 segundo de duración.
 	\end{itemize}
-	\item Control de intensidad de luz: módulo de control para iluminación LED de corriente continua implementado con modulación por ancho de pulso (PWM). Se utilizó un transistor BC337 \citep{38}.
+	\item Control de intensidad de luz: módulo de control para iluminación LED de corriente continua implementado con modulación por ancho de pulso (PWM). Se utilizó un transistor BC337 \citep{20}.
 	\begin{itemize}
 		\item Tipo: PWM y encendido - apagado (on - off).
 		\item Carga máxima: 800 mA CC.
@@ -198,18 +247,19 @@ En la figura \ref{fig:9} se muestra la imagen del encoder a la izquierda y del s
 	\end{itemize}
 \end{itemize}
 
-En la figura \ref{fig:10} se muestra la imagen del circuito de potencia para la calefacción montado en una caja estanca a la izquierda y del control por ancho de pulso para la dimerización a la derecha con sus correspondientes esquemas de conexión.
+En la figura \ref{fig:10} se muestra la imagen del circuito de potencia para la calefacción montado en una caja estanca a la izquierda, y del control por ancho de pulso para la dimerización a la derecha con sus correspondientes esquemas de conexión. Ambos circuitos fueron montados sobre una placa perforada de desarrollo para hacer las pruebas de funcionamiento.
 
+\newpage
 \begin{figure}[h]
 \centering
-\includegraphics[scale=1.4]{Figura 10 - Actuadores.jpg}
+\includegraphics[scale=1.3]{Figura 10 - Actuadores.jpg}
 \caption[Actuadores]{Actuadores utilizados.}
 \label{fig:10}
 \end{figure}
 
 \section{Herramientas de software}
 
-\subsection{Visual studio code} \citep{14}
+\subsection{Visual studio code \citep{21}}
 
 Visual Studio Code es un editor de código fuente desarrollado por Microsoft para múltiples sistemas operativos. Incluye soporte para la depuración, control integrado de Git, resaltado de sintaxis, finalización inteligente de código, fragmentos y refactorización de código. Es personalizable y tiene la posibilidad de instalar extensiones para agregar lenguajes, depuradores y herramientas para el desarrollo de código. Es gratuito y de código abierto, aunque la descarga oficial está bajo software privativo e incluye características personalizadas por Microsoft.
 
@@ -219,31 +269,31 @@ Algunos de los lenguajes de programación que soporta son: C, C++, Dockerfile, G
 
 El marco de desarrollo de ESP, o ESP-IDF (en inglés \textit{ESP IoT Development Framework}) es un entorno completo de programación para desarrollar sistemas embebidos para dispositivos ESP. Es desarrollado por Espressif y se puede descargar como una extensión de Visual studio code. El lenguaje de programación es C e incluye herramientas para cargar el código desarrollado al chip y depurar el programa en tiempo real.
 
-El lenguaje C es un lenguaje de programación de propósito general de tipos de datos estáticos, débilmente tipado. Dispone de las estructuras típicas de los lenguajes de alto nivel pero, a su vez, dispone de construcciones del lenguaje que permiten un control a bajo nivel. Uno de los objetivos de diseño del lenguaje C es que solo sean necesarias unas pocas instrucciones en lenguaje máquina para traducir cada elemento del lenguaje, sin que haga falta un soporte intenso en tiempo de ejecución \citep{15}.
+El lenguaje C es un lenguaje de programación de propósito general de tipos de datos estáticos, débilmente tipado. Dispone de las estructuras típicas de los lenguajes de alto nivel pero, a su vez, dispone de construcciones del lenguaje que permiten un control a bajo nivel. Uno de los objetivos de diseño del lenguaje C es que solo sean necesarias unas pocas instrucciones en lenguaje máquina para traducir cada elemento del lenguaje, sin que haga falta un soporte intenso en tiempo de ejecución \citep{22}.
 
 \subsection{Lenguajes JavaScript y TypeScript}
 
-JavaScript (abreviado comúnmente JS) es un lenguaje de programación interpretado. Se define como orientado a objetos, basado en prototipos, imperativo, débilmente tipado y dinámico. Se utiliza principalmente del lado del cliente, implementado como parte de un navegador web permitiendo mejoras en la interfaz de usuario y páginas web dinámicas, aunque también se utiliza del lado del servidor. Todos los navegadores modernos interpretan el código en este lenguaje integrado en las páginas web. Para interactuar con una página web se provee al lenguaje JavaScript de una implementación del modelo de objeto de documento, o DOM (en inglés \textit{Document Object Model}). Es el único lenguaje de programación que entienden de forma nativa los navegadores \citep{16}.
+JavaScript (abreviado comúnmente JS) es un lenguaje de programación interpretado. Se define como orientado a objetos, basado en prototipos, imperativo, débilmente tipado y dinámico. Se utiliza principalmente del lado del cliente, implementado como parte de un navegador web permitiendo mejoras en la interfaz de usuario y páginas web dinámicas, aunque también se utiliza del lado del servidor. Todos los navegadores modernos interpretan el código en este lenguaje integrado en las páginas web. Para interactuar con una página web se provee al lenguaje JavaScript de una implementación del modelo de objeto de documento, o DOM (en inglés \textit{Document Object Model}). Es el único lenguaje de programación que entienden de forma nativa los navegadores \citep{23}.
 
-TypeScript es un lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft. Es un superconjunto de JavaScript, su antecesor, que esencialmente añade tipos estáticos y objetos basados en clases. Es usado para desarrollar aplicaciones JavaScript que se ejecutarán en el lado del cliente o del servidor, o extensiones para programas. Extiende la sintaxis de su antecesor, por tanto cualquier código en el lenguaje original existente debería funcionar sin problemas. Está pensado para grandes proyectos, los cuales a través de un compilador de TypeScript se traducen a código JavaScript \citep{17}.
+TypeScript es un lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft. Es un superconjunto de JavaScript, su antecesor, que esencialmente añade tipos estáticos y objetos basados en clases. Es usado para desarrollar aplicaciones JavaScript que se ejecutarán en el lado del cliente o del servidor, o extensiones para programas. Extiende la sintaxis de su antecesor, por tanto cualquier código en el lenguaje original existente debería funcionar sin problemas. Está pensado para grandes proyectos, los cuales a través de un compilador de TypeScript se traducen a código JavaScript \citep{24}.
 
 \subsection{Angular y Ionic}
 
-Angular es un marco de desarrollo (framework en inglés) de ingeniería de software de código abierto mantenido por Google, que sirve para desarrollar aplicaciones web de estilo aplicación de una sola página (en inglés \textit{single page application} o SPA) y aplicación web progresiva (en inglés \textit{Progressive Web App} o PWA). Sirve tanto para versiones móviles como de escritorio. Ofrece soluciones robustas, escalables y optimizadas para lograr un estilo de codificación homogéneo y de gran modularidad. Su desarrollo se realiza por medio de TypeScript o JavaScript. En este último se ofrecen diversas herramientas adicionales al lenguaje como tipado estático o decoradores \citep{18}.
+Angular es un marco de desarrollo (framework en inglés) de ingeniería de software de código abierto mantenido por Google, que sirve para desarrollar aplicaciones web de estilo aplicación de una sola página (en inglés \textit{single page application} o SPA) y aplicación web progresiva (en inglés \textit{Progressive Web App} o PWA). Sirve tanto para versiones móviles como de escritorio. Ofrece soluciones robustas, escalables y optimizadas para lograr un estilo de codificación homogéneo y de gran modularidad. Su desarrollo se realiza por medio de TypeScript o JavaScript. En este último se ofrecen diversas herramientas adicionales al lenguaje como tipado estático o decoradores \citep{25}.
 
-El marco de desarrollo Ionic es un kit de desarrollo de software (en inglés \textit{Software Development Kit} o SDK) de frontend de código abierto para desarrollar aplicaciones híbridas basado en tecnologías web (HTML, CSS y JS). Es decir, un framework que nos permite desarrollar aplicaciones multiplataforma desde una única base de código. Posee la capacidad de integrarse con otros marcos populares como Angular, React y Vue. Su principal característica es que permite desarrollar y desplegar aplicaciones híbridas, que funcionan en múltiples plataformas, como iOS nativo, Android, escritorio y la web (como una aplicación web progresiva) con una única base de código \citep{19}.
+El marco de desarrollo Ionic es un kit de desarrollo de software (en inglés \textit{Software Development Kit} o SDK) de frontend de código abierto para desarrollar aplicaciones híbridas basado en tecnologías web (HTML, CSS y JS). Es decir, un framework que nos permite desarrollar aplicaciones multiplataforma desde una única base de código. Posee la capacidad de integrarse con otros marcos populares como Angular, React y Vue. Su principal característica es que permite desarrollar y desplegar aplicaciones híbridas, que funcionan en múltiples plataformas, como iOS nativo, Android, escritorio y la web (como una aplicación web progresiva) con una única base de código \citep{26}.
 
 \subsection{Bases de datos relacionales MySQL y MariaDB}
 
 Una base de datos relacional es un conjunto de una o más tablas estructuradas en registros (filas) y campos (columnas), que se vinculan entre sí por un campo en común. MySQL es un sistema de administración de bases de datos relacionales de código abierto desarrollado por Oracle. Se considera como la base de datos de código abierto más utilizada en el mundo. Posee cuatro funciones básicas que se conocen con la sigla CRUD: \textit{create} (crear), \textit{read} (leer), \textit{update} (actualizar) y \textit{delete} (borrar). Estas funciones son las que se aplican a los nuevos registros que se quieran crear y a los ya existentes que se deseen leer, actualizar y borrar. Este tipo de bases de datos posee una arquitectura cliente-servidor, siendo el cliente el que hace las solicitudes de datos y el servidor el que posee dichos datos y responde a dicha solicitud.
 
-MariaDB es una versión modificada de MySQL. Fue creada por el equipo de desarrollo original de MySQL debido a problemas de licencia y distribución después de que Oracle Corporation adquiriera MySQL. MariaDB adopta los archivos de definición de tablas y datos de MySQL y también usa protocolos de cliente, API de cliente, puertos y sockets idénticos. Con ello se pretende que los usuarios de MySQL puedan cambiar a MariaDB sin problemas \citep{20}.
+MariaDB es una versión modificada de MySQL. Fue creada por el equipo de desarrollo original de MySQL debido a problemas de licencia y distribución después de que Oracle Corporation adquiriera MySQL. MariaDB adopta los archivos de definición de tablas y datos de MySQL y también usa protocolos de cliente, API de cliente, puertos y sockets idénticos. Con ello se pretende que los usuarios de MySQL puedan cambiar a MariaDB sin problemas \citep{27}.
 
 \subsection{Contenedores con Docker}
 
-Los contenedores son una forma de virtualización del sistema operativo. Un solo contenedor se puede usar para ejecutar cualquier aplicación, desde un microservicio o un proceso de software a una aplicación de mayor tamaño. Dentro de un contenedor se encuentran todos los ejecutables, el código binario, las bibliotecas y los archivos de configuración necesarios. Sin embargo, en comparación con los métodos de virtualización de máquinas o servidores, los contenedores no contienen imágenes del sistema operativo. Esto los hace más ligeros y portátiles, con una sobrecarga significativamente menor. En implementaciones de aplicaciones de mayor tamaño, se pueden poner en marcha varios contenedores como uno o varios clústeres de contenedores. Estos clústeres se pueden gestionar mediante un orquestador de contenedores, como Kubernetes o Docker Compose \citep{21}.
+Los contenedores son una forma de virtualización del sistema operativo. Un solo contenedor se puede usar para ejecutar cualquier aplicación, desde un microservicio o un proceso de software a una aplicación de mayor tamaño. Dentro de un contenedor se encuentran todos los ejecutables, el código binario, las bibliotecas y los archivos de configuración necesarios. Sin embargo, en comparación con los métodos de virtualización de máquinas o servidores, los contenedores no contienen imágenes del sistema operativo. Esto los hace más ligeros y portátiles, con una sobrecarga significativamente menor. En implementaciones de aplicaciones de mayor tamaño, se pueden poner en marcha varios contenedores como uno o varios clústeres de contenedores. Estos clústeres se pueden gestionar mediante un orquestador de contenedores, como Kubernetes o Docker Compose \citep{28}.
 
-Docker es un proyecto de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporcionando una capa adicional de abstracción y automatización de virtualización de aplicaciones en múltiples sistemas operativos. Usar Docker para crear y gestionar contenedores puede simplificar la creación de sistemas altamente distribuidos, permitiendo que múltiples aplicaciones, las tareas de los trabajadores y otros procesos funcionen de forma autónoma en una única máquina física o en varias máquinas virtuales \citep{22}. En la figura \ref{fig:11} se puede ver de forma gráfica el funcionamiento de un contenedor Docker.
+Docker es un proyecto de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporcionando una capa adicional de abstracción y automatización de virtualización de aplicaciones en múltiples sistemas operativos. Usar Docker para crear y gestionar contenedores puede simplificar la creación de sistemas altamente distribuidos, permitiendo que múltiples aplicaciones, las tareas de los trabajadores y otros procesos funcionen de forma autónoma en una única máquina física o en varias máquinas virtuales \citep{29}. En la figura \ref{fig:11} se puede ver de forma gráfica el funcionamiento de un contenedor Docker.
 
 \begin{figure}[h]
 \centering
@@ -253,7 +303,7 @@ Docker es un proyecto de código abierto que automatiza el despliegue de aplicac
 \end{figure}
 \footnotetext{Imagen tomada de: \url{https://algodaily.com/lessons/what-is-a-container-a-docker-tutorial}}
 
-Docker Compose es una herramienta para definir y ejecutar aplicaciones Docker de varios contenedores. Se utiliza un archivo YAML para configurar los servicios de su aplicación, y luego, con un solo comando, se crean e inician todos los servicios desde su configuración. Tiene comandos para gestionar todo el ciclo de vida de una aplicación con los que se pueden \citep{23}:
+Docker Compose es una herramienta para definir y ejecutar aplicaciones Docker de varios contenedores. Se utiliza un archivo YAML para configurar los servicios de su aplicación, y luego, con un solo comando, se crean e inician todos los servicios desde su configuración. Tiene comandos para gestionar todo el ciclo de vida de una aplicación con los que se pueden \citep{30}:
 
 \begin{itemize}
 	\item Iniciar, detener y reconstruir servicios.

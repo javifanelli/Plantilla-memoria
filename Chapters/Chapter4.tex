@@ -6,9 +6,9 @@ En este capítulo se detallan los ensayos realizados al sistema completo y los r
 
 \section{Banco de pruebas}
 
-El sistema consta físicamente de 2 tipos de componentes, nodos y servidor. El servidor posee a su vez la aplicación en el frontend y el backend con los módulos. También el sistema posee 2 tipos de nodos, control de calefacción y de iluminación.
+El sistema consta físicamente de dos tipos de componentes: nodos y servidor. El servidor incluye tanto la aplicación en el frontend y el backend con sus respectivos módulos. Además, el sistema posee dos tipos de nodos: uno para el control de calefacción y otro para el control de iluminación.
 
-Para ensayar el nodo de temperatura se utilizaron los materiales que lo componen que se muestran en la figura \ref{fig:31}.
+Para ensayar el nodo de temperatura, se utilizaron los materiales que lo conforman que se muestran en la figura \ref{fig:31}.
 
 \begin{figure}[h]
 \centering
@@ -17,9 +17,9 @@ Para ensayar el nodo de temperatura se utilizaron los materiales que lo componen
 \label{fig:31}
 \end{figure}
 
-Se puede observar la placa ESP32 montada sobre la placa de conexiones, el display, encoder, sensor de temperatura y una caja estanca con una conexión de toma corriente para conectar la estufa a encender. Esta caja además posee un cable para conectar a 220 VCA para alimentar la estufa y que funcione como un interruptor. Cabe aclarar que en modo automático el control de temperatura funciona con una histéresis de 1 grado, por lo que al setear la temperatura en un valor determinado, el control va a apagar la salida cuando la temperatura sobrepase por 1 grado al set-point y la va a encender cuando esté 1 grado por debajo de este valor.
+En la figura \ref{fig:31}, se puede observar la placa ESP32 montada sobre la placa de conexiones, el display, el encoder, el sensor de temperatura y una caja estanca con una conexión de toma corriente para conectar la estufa a encender. Además, esta caja incluye un cable para conectarse a una fuente de alimentación de 220 VCA, que actúa como un interruptor. Cabe aclarar que en modo automático, el control de temperatura opera con una histéresis de 1 grado. Esto significa que al configurar una temperatura específica, el control apagará la salida cuando la temperatura supere en 1 grado al set-point y la encenderá cuando esté 1 grado por debajo de este valor.
 
-Para ensayar el nodo de dimerización se utilizaron los materiales que lo componen que se muestran en la figura \ref{fig:32}.
+Para ensayar el nodo de dimerización, se utilizaron los materiales que lo conforman que se muestran en la figura \ref{fig:32}.
 
 \begin{figure}[h]
 \centering
@@ -28,7 +28,7 @@ Para ensayar el nodo de dimerización se utilizaron los materiales que lo compon
 \label{fig:32}
 \end{figure}
 
-Se puede observar la placa ESP32 montada sobre la placa de conexiones, el display, encoder, \textit{driver} de iluminación y la placa de LEDs de 5 VCC. El control posee un conector USB por lo que puede conectarse cualquier lámpara que funcione en este caso con 5 VCC y posea este conector.
+En la figura  \ref{fig:32} se puede observar la placa ESP32 montada sobre la placa de conexiones, el display, el encoder, el \textit{driver} de iluminación y la placa de LEDs de 5 VCC. El control posee un conector USB por lo que puede conectarse cualquier lámpara que funcione en este caso con 5 VCC y posea este conector.
 
 En la figura \ref{fig:33} pueden verse los componentes que forman parte del servidor.
 
@@ -43,19 +43,20 @@ Puede observarse la Raspberry Pi400, la fuente de 5 VCC 3A con su cable, un disc
 
 \section{Metodología empleada}
 
-El hardware se testeó de forma funcional. En cuanto al software se utilizaron distintas metodologías para la depuración de forma manual de los embebidos, el frontend y el backend. A continuación se describen cada una de ellas.
+El hardware se testeó de forma funcional. En cuanto al software se utilizaron distintas metodologías para la depuración de forma manual de los embebidos, el frontend y el backend. A continuación, se describen cada una de ellas.
 
 \subsection{Pruebas del frontend}
 
-Para el frontend se utilizaron pruebas funcionales manuales con el sistema funcionando. Básicamente el desarrollo fue progresivo con trabajo en paralelo. Esto fue hacer una aplicación básica primero y luego seguir sumando funcionalidades. A medida que el sistema fue creciendo se fueron agregando más componentes hasta tener la versión actual.
+Para el frontend se utilizaron pruebas funcionales manuales con el sistema funcionando. El desarrollo fue progresivo y se llevó a cabo en paralelo. Se creó una aplicación básica y, posteriormente, se fueron agregando nuevas funcionalidades. A medida que el sistema fue creciendo, se fueron agregando más componentes hasta tener la versión actual.
 
-Para las pruebas se utilizó la salida de la consola del navegador a medida que se iban implementando funciones y páginas nuevas. Con esto se logró mostrar en tiempo real el funcionamiento del sistema en cada una de las páginas y con cada función que se fue agregando. En el código \ref{lst:console front} se muestra a modo de ejemplo parte del desarrollo de la página para la visualización de un mensaje por consola de la configuración de un dispositivo.
+En lo que respecta a las pruebas, se empleó la salida de la consola del navegador a medida que se implementaban nuevas funciones y páginas. Esto permitió exhibir en tiempo real el funcionamiento del sistema en cada página y con cada función agregada. En el código \ref{lst:console front} se muestra a modo de ejemplo parte del desarrollo de la página para la visualización de un mensaje por consola de la configuración de un dispositivo.
 
-\begin{lstlisting}[caption={Muestra por consola de los datos recibidos}, label={lst:console front}]
+\begin{lstlisting}[caption={Muestra por consola de los datos recibidos.}, label={lst:console front}]
 ngOnInit() {
     const deviceId = this.activatedRoute.snapshot.paramMap.get('id') as string;
     this.dispositivoId = deviceId, 10;
-    this.subscription = this.dispositivoService.getDeviceById(this.dispositivoId).subscribe((data) => {
+    this.subscription = this.dispositivoService.getDeviceById(this.dispositivoId).
+   		subscribe((data) => {
       console.log(data);
       this.device = data[0];
       this.tipo = data[0].tipo;
@@ -80,9 +81,9 @@ Este mecanismo se utilizó en todas las páginas de la aplicación web y gracias
 
 Para el backend se utilizó un mecanismo similar de pruebas funcionales que para el frontend.
 
-El desarrollo fue progresivo por lo que a medida que se fueron incorporando funciones o endpoints nuevos, se fueron colocando muestras por consola para poder observar si los datos y las consultas estaban siendo resueltos de forma correcta. En el código \ref{lst:console back} se muestra como ejemplo el \textit{router} para borrar la tabla de mediciones de un dispositivo y el mensaje por consola de éxito y el ID del dispositivo.
+El desarrollo siguió un enfoque progresivo lo que significa que a medida que se fueron incorporando funciones o endpoints nuevos, se fueron colocando muestras por consola para poder observar si los datos y las consultas estaban siendo resueltos de forma correcta. En el código \ref{lst:console back} se muestra como ejemplo el \textit{router} para borrar la tabla de mediciones de un dispositivo y el mensaje por consola de éxito y el ID del dispositivo.
 
-\begin{lstlisting}[caption={Muestra por consola de los datos consultados}, label={lst:console back}]
+\begin{lstlisting}[caption={Muestra por consola de los datos consultados.}, label={lst:console back}]
 borrarTablaRouter.delete('/:id', async function (req, res, next) {
   const id = req.params.id;
   let connection;
@@ -108,6 +109,7 @@ borrarTablaRouter.delete('/:id', async function (req, res, next) {
 
 En la figura \ref{fig:35} se puede ver la consola con el mensaje de éxito y el ID del dispositivo cuya tabla de mediciones fue eliminada.
 
+\newpage
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.65]{Figura 35 - Consola back.png}
@@ -115,9 +117,9 @@ En la figura \ref{fig:35} se puede ver la consola con el mensaje de éxito y el 
 \label{fig:35}
 \end{figure}
 
-A estas pruebas se sumó el uso de la aplicación \textit{MQTTX} para testear la comunicación con el \textit{broker} y los dispositivos, especialmente al momento de implementar la seguridad con los certificados SSL. De esta forma se ensayaron la primera conexión segura, la inserción de datos desde un dispositivo simulado, el envío de configuración desde la aplicación a los nodos y el mensaje de solicitud de configuración inicial de un nodo, entre otros.
+Además de estas pruebas, se incorporó el uso de la aplicación \textit{MQTTX} para testear la comunicación con el \textit{broker} y los dispositivos, especialmente durante la implementación de la seguridad con los certificados SSL. De esta forma, se llevaron a cabo pruebas que abarcaron desde la primera conexión segura hasta la inserción de datos desde un dispositivo simulado, el envío de configuración desde la aplicación a los nodos y el mensaje de solicitud de configuración inicial de un nodo, entre otros.
 
-En la figura \ref{fig:36} puede verse la configuración de \textit{MQTTX} para el envío de datos de una medición simulada en el \textit{topic \textbackslash home\textbackslash temperatura\textbackslash data} para posteriormente verificar la correcta inserción en la base de datos.
+En la figura \ref{fig:36} puede verse la configuración de \textit{MQTTX} para el envío de datos de una medición simulada en el \textit{topic \textbackslash home\textbackslash temperatura\textbackslash data} para luego verificar la correcta inserción en la base de datos.
 
 \begin{figure}[h]
 \centering
@@ -128,9 +130,9 @@ En la figura \ref{fig:36} puede verse la configuración de \textit{MQTTX} para e
 
 \subsection{Pruebas de los nodos}
 
-El hardware se testeó haciendo pruebas de funcionamiento con los materiales mostrados en la sección anterior. Las pruebas constaron de hacer funcionar los nodos por dos días corridos corroborando que el control de temperatura funcione en los valores configurados y que la luminaria encienda y respete los valores de los saltos. Además se probó el funcionamiento de los horarios de encendido y apagado.
+El hardware se testeó haciendo pruebas de funcionamiento con los materiales mencionados en la sección anterior. Las pruebas consistieron en poner en funcionamiento los nodos durante dos días consecutivos, verificando que el control de temperatura funcionara dentro de los valores configurados y que la luminaria se encendiera y mantuviera los valores de los saltos. También se evaluó el funcionamiento de los horarios de encendido y apagado.
 
-En cuanto al software, las placas ESP32 poseen comunicación serial incorporado por lo que se colocaron funciones de muestra por consola al momento de incorporar funcionalidades nuevas. En el código  \ref{lst:dispositivo} se puede observar a modo de ejemplo el uso de la función \textit{ESP\_LOGI} para mostrar por consola el valor de la salida recibido por MQTT.
+En cuanto al software, las placas ESP32 poseen comunicación serial incorporada por lo que se colocaron funciones de muestra por consola al momento de incorporar funcionalidades nuevas. En el código \ref{lst:dispositivo}, se puede ver un ejemplo de cómo se utilizó la función \textit{ESP\_LOGI} para mostrar por consola el valor de la salida recibido por MQTT.
 
 \lstset{frame=tb,
   language=C++,
@@ -150,7 +152,7 @@ En cuanto al software, las placas ESP32 poseen comunicación serial incorporado 
   tabsize=3,
 }
 
-\begin{lstlisting}[caption={Muestra por consola de la terminal ESP-IDF}, label={lst:dispositivo}]
+\begin{lstlisting}[caption={Muestra por consola de la terminal ESP-IDF.}, label={lst:dispositivo}]
 const cJSON *salida = cJSON_GetObjectItemCaseSensitive(root, "salida");
     if (cJSON_IsNumber(salida) && select) {
         if(salida->valueint==100)
@@ -166,53 +168,63 @@ En este caso se muestra por consola el mensaje de recepción del valor de salida
 
 \section{Resultados finales}
 
-Como prueba final se montaron los 2 nodos, y al de temperatura se le conectó un calefactor eléctrico de 750 W. Del lado del servidor se puso a correr el \textit{docker compose} con el sistema completo. Se hicieron seteos tanto desde la aplicación web como de cada uno de los nodos.
+Para la prueba final, se ensamblaron los 2 nodos, y se conectó un calefactor eléctrico de 750 W al nodo de temperatura. En el lado del servidor, se ejecutó el \textit{docker-compose} con el sistema completo. Se realizaron ajustes tanto desde la aplicación web como de cada uno de los nodos.
 
-En la figura \ref{fig:37} sel lado izquierdo se ve el nodo de iluminación funcionando encendido y en la pantalla se observa el valor de la salida y del lado derecho la pantalla de configuración de modo automático.
+En la figura \ref{fig:37}, se puede observar el nodo de iluminación funcionando encendido, y en la pantalla se muestra el valor de la salida.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.35]{Figura 37 - Dimmer funcionando.jpg}
+\includegraphics[scale=0.08]{Figura 37 - Dimmer funcionando.jpg}
 \caption[Dimmer funciona]{Dimmer en modo automático funcionando.}
 \label{fig:37}
 \end{figure}
 
-En la figura \ref{fig:38} puede observarse la página de configuración del nodo dimmer. Puede observarse que los datos ingresados corresponden con los datos guardados en el nodo y que está actuando como corresponde.
+En la figura \ref{fig:38}, se puede observar la pantalla de configuración de modo automático.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{Figura 38 - Config.png}
-\caption[Config dimmer]{Pantalla de configuración de dimmer.}
+\includegraphics[angle=270, scale=0.47]{Figura 38 - Pantalla dimmer funcionando.jpg}
+\caption[Pantalla dimmer funciona]{Pantalla de configuración del dimmer en modo automático.}
 \label{fig:38}
 \end{figure}
 
-Se corroboró que se agreguen y modifiquen los datos de los dispositivos desde la página correspondiente, comprobando con los datos que se ven en la pantalla de \textit{phpMyAdmin}. En una prueba que se realizó se cargó un dispositivo nuevo y se corroboró desde la aplicación del sistema y desde la página de administración de la base de datos. En la figura \ref{fig:39} puede verse como se agregó un dispositivo nuevo desde la página en la parte superior y como se ve reflejado en la base de datos en la inferior.
+En la figura \ref{fig:39} puede observarse la página de configuración del nodo dimmer. Puede observarse que los datos ingresados corresponden con los datos guardados en el nodo, y que este último está funcionando según lo esperado.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.33]{Figura 39 - Agregar dispositivo.png}
-\caption[Agregar dispositivo]{Valores de dispositivo nuevo.}
+\includegraphics[scale=0.4]{Figura 39 - Config.png}
+\caption[Config dimmer]{Pantalla de configuración de dimmer.}
 \label{fig:39}
 \end{figure}
 
-Puede verse que los datos cargados coinciden con los almacenados. La diferencia radica en que no se registró la MAC del dispositivo ya que al momento de obtener la imagen el dispositivo no había emitido datos al servidor.
+Se ha verificado la capacidad de agregar y modificar los datos de los dispositivos desde la página correspondiente, contrastando los datos visualizados en la pantalla de \textit{phpMyAdmin}. Durante una prueba que se realizó, se cargó un dispositivo nuevo y se corroboró tanto desde la aplicación del sistema como desde la página de administración de la base de datos. En la figura \ref{fig:39} puede verse cómo se agregó un dispositivo nuevo desde la página en la parte superior y cómo se ve reflejado en la base de datos en la inferior.
 
-Algo similar a la prueba de los dispositivos se hizo con los usuarios. El sistema por default tiene los valores \textit{user1}, \textit{user2} y \textit{user3} y contraseña \textit{user}. Esto se logró creando estos usuarios con sus datos en el archivo de creación de la base de datos \textit{domotica.sql}. En la figura \ref{fig:40} se muestran los valores ingresados en la página de configuración en la parte superior y los que están almacenados en la base de datos en la inferior. Como se puede observar en la imagen, los valores cargados desde la página coinciden con los almacenados en la base de datos.
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.33]{Figura 40 - Modificar usuario.png}
-\caption[Cambiar usuario]{Valores de usuario modificados.}
-\label{fig:40}
-\end{figure}
-
-Por último se hizo la corroboración de la activación de la alarma y el envío del mail. En la figura \ref{fig:41} puede observarse la configuración del dispositivo en la parte superior y el mail recibido en la parte inferior.
 \newpage
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.35]{Figura 41 - Alarma.png}
+\includegraphics[scale=0.33]{Figura 40 - Agregar dispositivo.png}
+\caption[Agregar dispositivo]{Valores de dispositivo nuevo.}
+\label{fig:40}
+\end{figure}
+
+Aquí se observa que los datos cargados coinciden con los almacenados. La diferencia radica en que no se registró la MAC del dispositivo ya que al momento de obtener la imagen el dispositivo no había emitido datos al servidor.
+
+Algo similar a la prueba de los dispositivos se hizo con los usuarios. El sistema por default tiene los valores \textit{user1}, \textit{user2} y \textit{user3} y contraseña \textit{user}. Esto se logró creando estos usuarios con sus datos en el archivo de creación de la base de datos \textit{domotica.sql}. En la figura \ref{fig:41} se muestran los valores ingresados en la página de configuración en la parte superior y los que están almacenados en la base de datos en la inferior. Como se puede observar en la imagen, los valores cargados desde la página coinciden con los almacenados en la base de datos.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.33]{Figura 41 - Modificar usuario.png}
 \caption[Cambiar usuario]{Valores de usuario modificados.}
 \label{fig:41}
+\end{figure}
+
+Por último, se hizo la corroboración de la activación de la alarma y el envío del mail. En la figura \ref{fig:42} puede observarse la configuración del dispositivo en la parte superior y el mail recibido en la parte inferior.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.35]{Figura 42 - Alarma.png}
+\caption[Envío alarma]{Envío de alarma de medición.}
+\label{fig:42}
 \end{figure}
 
 De esta forma se hicieron las pruebas más importantes de funcionalidades del sistema. Al dar resultados de funcionamiento satisfactorios, se concluye que la aplicación funciona de manera correcta.
@@ -221,9 +233,10 @@ De esta forma se hicieron las pruebas más importantes de funcionalidades del si
 
 En la tabla \ref{tab:estadoarte} se encuentra la comparación entre las soluciones de hogares inteligentes existentes en el mercado nacional, Domotic y Reactor, y el trabajo realizado. 
 
+\newpage
 \begin{table}[h]
 \centering
-\caption[Estado arte mercado nacional]{Comparativa entre las distintas opciones}
+\caption[Estado arte mercado nacional]{Comparativa entre las distintas opciones.}
 \begin{tabular}{l c c c}
 \toprule
 \textbf{Funcionalidad} & \textbf{Domotic} & \textbf{Reactor} & \textbf{Trabajo final}\\
@@ -244,6 +257,6 @@ Conexión	 desde el exterior	& Sí		& Sí		& No\\
 \label{tab:estadoarte}
 \end{table}
 
-Como se puede observar de la tabla comparativa, el trabajo está a la altura de otras soluciones similares. Como puntos positivos, el sistema desarrollado posee una unidad central, en este caso el servidor, es capaz de aceptar diseños nuevos de dispositivos, posee avisos al suceder eventos y almacena valores de mediciones que sean útiles.
+Como se puede observar de la tabla comparativa, el trabajo está a la par de otras soluciones similares. Entre sus puntos positivos, el sistema desarrollado posee una unidad central, en este caso, el servidor, que puede aceptar diseños nuevos de dispositivos, proporciona notificaciones en caso de eventos y almacena valores de mediciones que sean útiles.
 
 En cuanto a los aspectos a mejorar se describirán en el capítulo 5 en la sección de trabajo futuro.
