@@ -58,7 +58,7 @@ El protocolo de transporte de telemetría de colas de mensajes, conocido como MQ
 
 El nodo central de su topología se llama \textit{broker} y es al cual se conectan los clientes remotos. El \textit{broker} se encarga de gestionar la red, recibir todos los mensajes de los clientes y redirigirlos hacia los clientes de destino. Un cliente es cualquier dispositivo que pueda interactuar con el \textit{broker} para enviar y recibir mensajes. Puede ser un sensor de IoT en campo o una aplicación en un centro de datos que procesa datos provenientes de los sensores. Cualquier cliente puede publicar o suscribirse a \textit{topics} (temas) para acceder a la información. Un \textit{topic} se representa mediante una cadena de texto con una estructura jerárquica. Cada jerarquía se separa con el caracter "/".
 
-La finalidad de MQTT es minimizar el uso recursos en los dispositivos (CPU, RAM, ROM), ser confiable y ofrecer distintos niveles calidad del servicio. Consume un ancho de banda relativamente bajo y mantiene una conexión continua entre el broker y los clientes. Generalmente se suele usar este protocolo como nexo entre los dispositivos de campo con elementos típicos de software como servidores webs, bases de datos o herramientas de análisis. En la figura \ref{fig:6} se puede ver una arquitectura básica de conexión MQTT \citep{10}.
+La finalidad de MQTT es minimizar el uso recursos en los dispositivos (CPU, RAM, ROM), ser confiable y ofrecer distintos niveles calidad del servicio. Consume un ancho de banda relativamente bajo y mantiene una conexión continua entre el broker y los clientes. Una de las grandes ventajas de MQTT es que permite desacoplar los nodos que producen la información de aquellos que la van a utilizar, tanto a nivel de datos como de aplicaciones. Un nodo publica y se pueden suscribir una cantidad de nodos en forma independiente a cada \textit{topic}, eso simplifica la arquitectura y la hace más flexible. Generalmente se suele usar este protocolo como nexo entre los dispositivos de campo con elementos típicos de software como servidores webs, bases de datos o herramientas de análisis. En la figura \ref{fig:6} se puede ver una arquitectura básica de conexión MQTT \citep{10}.
 
 \begin{figure}[h]
 \centering
@@ -166,9 +166,9 @@ Un SoC estándar está constituido por \citep{12}:
 	\item Reguladores de tensión y circuitos de gestión eficaz de la energía.
 \end{itemize}
 
-\subsubsection{Familia ESP32 \citep{13}}
+\subsubsection{Familia ESP32}
 
-ESP32 es la denominación de una familia de chips SoC de bajo costo y consumo de energía, con tecnología Wi-Fi y Bluetooth de modo dual integrada. Emplea un microprocesador Tensilica Xtensa LX6 en sus variantes de simple y doble núcleo e incluye interruptores de antena, balun de radiofrecuencia, amplificador de potencia, amplificador receptor de bajo ruido, filtros y módulos de administración de energía. El ESP32 fue creado y desarrollado por Espressif Systems.
+ESP32 es la denominación de una familia de chips SoC de bajo costo y consumo de energía, con tecnología Wi-Fi y Bluetooth de modo dual integrada. Emplea un microprocesador Tensilica Xtensa LX6 en sus variantes de simple y doble núcleo e incluye interruptores de antena, balun de radiofrecuencia, amplificador de potencia, amplificador receptor de bajo ruido, filtros y módulos de administración de energía. El ESP32 fue creado y desarrollado por Espressif Systems \citep{13}.
 
 En la figura \ref{fig:8} se pueden ver algunos de los módulos de desarrollo que contienen ESP32.
 
@@ -209,14 +209,13 @@ A continuación, se listan sensores utilizados con sus principales característi
 	\begin{itemize}
 		\item Rango de temperatura: -40 a 80 grados Celsius.
 		\item Resolución: 0,1 grado Celsius.
-		\item Comunicación: serie, bus de 1 hilo, 40 bits por trama.
+		\item Comunicación: serie, bus de 1 conductor, 40 bits por trama.
 	\end{itemize}
 	\item KY-040: encoder rotativo con interruptor. 20 pulsos por vuelta \citep{16}.
 \end{itemize}
 
 En la figura \ref{fig:9} se muestra la imagen del encoder a la izquierda y del sensor de temperatura a la derecha con sus correspondientes esquemas de conexión.
 
-\newpage
 \begin{figure}[h]
 \centering
 \includegraphics[scale=1.4]{Figura 9 - Sensores.jpg}
@@ -259,11 +258,11 @@ En la figura \ref{fig:10} se muestra la imagen del circuito de potencia para la 
 
 \section{Herramientas de software}
 
-\subsection{Visual studio code \citep{21}}
+\subsection{Visual Studio Code}
 
 Visual Studio Code es un editor de código fuente desarrollado por Microsoft para múltiples sistemas operativos. Incluye soporte para la depuración, control integrado de Git, resaltado de sintaxis, finalización inteligente de código, fragmentos y refactorización de código. Es personalizable y tiene la posibilidad de instalar extensiones para agregar lenguajes, depuradores y herramientas para el desarrollo de código. Es gratuito y de código abierto, aunque la descarga oficial está bajo software privativo e incluye características personalizadas por Microsoft.
 
-Algunos de los lenguajes de programación que soporta son: C, C++, Dockerfile, Git-commit, HTML, JSON, Java, JavaScript, PHP, Python, Ruby, Rust, SQL, Shell script, TypeScript y Visual Basic, entre otros.
+Algunos de los lenguajes de programación que soporta son: C, C++, Dockerfile, Git-commit, HTML, JSON, Java, JavaScript, PHP, Python, Ruby, Rust, SQL, Shell script, TypeScript y Visual Basic, entre otros \citep{21}.
 
 \subsection{Marco de desarrollo ESP}
 
@@ -285,7 +284,7 @@ El marco de desarrollo Ionic es un kit de desarrollo de software (en inglés \te
 
 \subsection{Bases de datos relacionales MySQL y MariaDB}
 
-Una base de datos relacional es un conjunto de una o más tablas estructuradas en registros (filas) y campos (columnas), que se vinculan entre sí por un campo en común. MySQL es un sistema de administración de bases de datos relacionales de código abierto desarrollado por Oracle. Se considera como la base de datos de código abierto más utilizada en el mundo. Posee cuatro funciones básicas que se conocen con la sigla CRUD: \textit{create} (crear), \textit{read} (leer), \textit{update} (actualizar) y \textit{delete} (borrar). Estas funciones son las que se aplican a los nuevos registros que se quieran crear y a los ya existentes que se deseen leer, actualizar y borrar. Este tipo de bases de datos posee una arquitectura cliente-servidor, siendo el cliente el que hace las solicitudes de datos y el servidor el que posee dichos datos y responde a dicha solicitud.
+Una base de datos relacional es un conjunto de una o más tablas estructuradas en registros (filas) y campos (columnas), que se vinculan entre sí por un campo en común. MySQL es un sistema de administración de bases de datos relacionales de código abierto. Se considera como la base de datos de código abierto más utilizada en el mundo. Posee cuatro funciones básicas que se conocen con la sigla CRUD: \textit{create} (crear), \textit{read} (leer), \textit{update} (actualizar) y \textit{delete} (borrar). Estas funciones son las que se aplican a los nuevos registros que se quieran crear y a los ya existentes que se deseen leer, actualizar y borrar. Este tipo de bases de datos posee una arquitectura cliente-servidor, siendo el cliente el que hace las solicitudes de datos y el servidor el que posee dichos datos y responde a dicha solicitud.
 
 MariaDB es una versión modificada de MySQL. Fue creada por el equipo de desarrollo original de MySQL debido a problemas de licencia y distribución después de que Oracle Corporation adquiriera MySQL. MariaDB adopta los archivos de definición de tablas y datos de MySQL y también usa protocolos de cliente, API de cliente, puertos y sockets idénticos. Con ello se pretende que los usuarios de MySQL puedan cambiar a MariaDB sin problemas \citep{27}.
 
